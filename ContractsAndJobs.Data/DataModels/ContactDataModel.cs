@@ -1,11 +1,4 @@
-﻿using ContractsAndJobs.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ContractsAndJobs.Data.DataModels
+﻿namespace ContractsAndJobs.Data.DataModels
 {
     public class ContactDataModel
     {

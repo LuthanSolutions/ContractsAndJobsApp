@@ -1,8 +1,5 @@
 ﻿using ContractsAndJobs.Data;
-using ContractsAndJobs.Pages;
 using ContractsAndJobs.ViewModels;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using Syncfusion.Blazor;
 
 var builder = WebApplication.CreateBuilder(args);

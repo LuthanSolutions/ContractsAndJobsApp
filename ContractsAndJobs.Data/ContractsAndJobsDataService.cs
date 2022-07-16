@@ -27,13 +27,7 @@ namespace ContractsAndJobs.Data
             var reader = await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                contacts.Add(new Contact
-                {
-                    Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                    FirstName = !await reader.IsDBNullAsync("FirstName") ? reader.GetString(reader.GetOrdinal("FirstName")) : null,
-                    LastName = !await reader.IsDBNullAsync("LastName") ? reader.GetString(reader.GetOrdinal("LastName")) : null,
-                    Agency = !await reader.IsDBNullAsync("Agency") ? reader.GetString(reader.GetOrdinal("Agency")) : null,
-                });
+                contacts.Add(GetObjectFromReader<Contact>(reader));
             }
             return contacts;
         }
@@ -51,30 +45,31 @@ namespace ContractsAndJobs.Data
             var reader = await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                models.Add(new ContactDataModel
-                {
-                        ContactId = await reader.IsDBNullAsync("ContactId") ? null : reader.GetInt32(reader.GetOrdinal("ContactId")),
-                        FirstName = await reader.IsDBNullAsync("FirstName") ? null : reader.GetString(reader.GetOrdinal("FirstName")),
-                        LastName = await reader.IsDBNullAsync("LastName") ? null : reader.GetString(reader.GetOrdinal("LastName")),
-                        Agency = await reader.IsDBNullAsync("Agency") ? null : reader.GetString(reader.GetOrdinal("Agency")),
-                        InteractionId = await reader.IsDBNullAsync("InteractionId") ? null : reader.GetInt32(reader.GetOrdinal("InteractionId")),
-                        InteractionContactId = await reader.IsDBNullAsync("InteractionContactId") ? null : reader.GetInt32(reader.GetOrdinal("InteractionContactId")),
-                        Date = await reader.IsDBNullAsync("Date") ? null : reader.GetDateTime(reader.GetOrdinal("Date")),
-                        InteractionRoleId = await reader.IsDBNullAsync("InteractionRoleId") ? null : reader.GetInt32(reader.GetOrdinal("InteractionRoleId")),
-                        RoleId = await reader.IsDBNullAsync("RoleId") ? null : reader.GetInt32(reader.GetOrdinal("RoleId")),
-                        Company = await reader.IsDBNullAsync("Company") ? null : reader.GetString(reader.GetOrdinal("Company")),
-                        Type = await reader.IsDBNullAsync("Type") ? null : reader.GetInt32(reader.GetOrdinal("Type")),
-                        WorkType = await reader.IsDBNullAsync("WorkType") ? null : reader.GetInt32(reader.GetOrdinal("WorkType")),
-                        Salary = await reader.IsDBNullAsync("Salary") ? null : reader.GetDecimal(reader.GetOrdinal("Salary")),
-                        DayRate = await reader.IsDBNullAsync("DayRate") ? null : reader.GetDecimal(reader.GetOrdinal("DayRate")),
-                        InsideIr35 = await reader.IsDBNullAsync("InsideIr35") ? null : reader.GetBoolean(reader.GetOrdinal("InsideIr35")),
-                        Location = await reader.IsDBNullAsync("Location") ? null : reader.GetString(reader.GetOrdinal("Location"))
-                    });
+                models.Add(GetObjectFromReader<ContactDataModel>(reader));
             }
             return GetContactFromDataModels(models);
         }
 
-        private static Contact GetContactFromDataModels(IList<ContactDataModel> dataModels)
+        private static T GetObjectFromReader<T>(IDataReader reader)
+        {
+            var contactDataModel = (T)Activator.CreateInstance(typeof(T))!;
+            foreach (var property in contactDataModel.GetType().GetProperties())
+            {
+                if (!DataReaderHasColumn(reader, property.Name)) continue;
+                if (reader.IsDBNull(reader.GetOrdinal(property.Name))) continue;
+                property.SetValue(contactDataModel, reader[property.Name]);
+            }
+            return contactDataModel;
+        }
+
+        private static bool DataReaderHasColumn(IDataReader reader, string columnName)
+        {
+            var schemaTable = reader.GetSchemaTable()!;
+            var rows = schemaTable.Rows.OfType<DataRow>();
+            return rows.Any(row => row["ColumnName"].ToString() == columnName);
+        }
+
+        private static Contact GetContactFromDataModels(IEnumerable<ContactDataModel> dataModels)
         {
             return dataModels
                 .GroupBy(c => c.ContactId)
@@ -85,7 +80,7 @@ namespace ContractsAndJobs.Data
                     LastName = c.First().LastName,
                     Id = c.Key!.Value,
                     Interactions = c.GroupBy(i => i.InteractionId)
-                        .Select(i => new Interaction()
+                        .Select(i => new Interaction
                         {
                             Id = i.Key!.Value,
                             Date = i.First().Date!.Value,
