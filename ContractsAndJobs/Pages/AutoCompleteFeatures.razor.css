@@ -1,0 +1,18 @@
+﻿.control_wrapper {
+    width: 350px;
+    margin: 0 auto;
+    padding: 3%;
+}
+
+.ulstyle {
+    margin: 0px;
+    padding-left: 20px;
+    display: inline-block;
+}
+
+.list {
+    float: left;
+    line-height: 20px;
+    margin: 10px;
+    min-width: 330px;
+}
