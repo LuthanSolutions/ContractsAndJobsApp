@@ -3,67 +3,71 @@
 
 <PageTitle>Home</PageTitle>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <form>
-                <div class="mb-3">
-                    <label for="contactSearch">Contact Search</label>
-                    <SfAutoComplete ID="contactSearch" TValue="string" TItem="Contact" DataSource="@this.ViewModel.Contacts" @bind-Value="@this.ViewModel.SelectedContact">
-                        <AutoCompleteFieldSettings Value="FullName"></AutoCompleteFieldSettings>
-                        <AutoCompleteEvents TItem="Contact" TValue="string" ValueChange="@this.SelectedPersonChangeHandler"></AutoCompleteEvents>
-                    </SfAutoComplete>
-                    <div class="form-text">Enter part of first name, last name or agency name</div>
-                </div>
-            </form>
-        </div>
-    </div>
-    @if (this.ViewModel.Contact != null)
-    {
-        <SfGrid TValue="Interaction" DataSource="@this.ViewModel.Contact.Interactions">
-            <GridColumns>
-                <GridColumn Field="Date" HeaderText="Date" Format="dddd dd/MM/yyyy"></GridColumn>
-                <GridColumn Field="Role.Company" HeaderText="Company"></GridColumn>
-            </GridColumns>
-            <GridTemplates>
-                <DetailTemplate>
-                    @{
-                        var role = (context as Interaction)?.Role;
-                    }
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <label>Type: @role.Type</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label>Work Type: @role.WorkType</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label>Salary: @role.Salary</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label>Day Rate: @role.DayRate</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label>Inside IR35: @role.InsideIr35</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label>Location: @role.Location</label>
-                            </div>
-                        </div>
+@if (this.ViewModel.Contacts != null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="mb-3">
+                        <label for="contactSearch">Contact Search</label>
+                        <SfAutoComplete ID="contactSearch" TValue="string" TItem="Contact" DataSource="@this.ViewModel.Contacts" @bind-Value="@this.ViewModel.SelectedContact">
+                            <AutoCompleteFieldSettings Value="FullName"></AutoCompleteFieldSettings>
+                            <AutoCompleteEvents TItem="Contact" TValue="string" ValueChange="@this.SelectedPersonChangeHandler"></AutoCompleteEvents>
+                        </SfAutoComplete>
+                        <div class="form-text">Enter part of first name, last name or agency name</div>
                     </div>
-                </DetailTemplate>
-            </GridTemplates>
-        </SfGrid>
-    }
-</div>
+                </form>
+            </div>
+        </div>
+
+        @if (this.ViewModel.Contact != null)
+        {
+            <SfGrid TValue="Interaction" DataSource="@this.ViewModel.Contact.Interactions">
+                <GridColumns>
+                    <GridColumn Field="Date" HeaderText="Date" Format="dddd dd/MM/yyyy"></GridColumn>
+                    <GridColumn Field="Role.Company" HeaderText="Company"></GridColumn>
+                </GridColumns>
+                <GridTemplates>
+                    <DetailTemplate>
+                        @{
+                            var role = (context as Interaction)?.Role;
+                        }
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <label>Type: @role.Type</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Work Type: @role.WorkType</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Salary: @role.Salary</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Day Rate: @role.DayRate</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Inside IR35: @role.InsideIr35</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Location: @role.Location</label>
+                                </div>
+                            </div>
+                        </div>
+                    </DetailTemplate>
+                </GridTemplates>
+            </SfGrid>
+        }
+    </div>
+}

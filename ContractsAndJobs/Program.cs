@@ -13,7 +13,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
-builder.Services.AddTransient<IIndexViewModel, StubIndexViewModel>();
+builder.Services.AddTransient<IIndexViewModel, IndexViewModel>();
+builder.Services.AddTransient<IContractsAndJobsDataService, ContractsAndJobsDataService>();
 
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Njc3ODQ0QDMyMzAyZTMyMmUzMFJDcDhWZXRpdzlIalpFNVA3cGtSTzVkT0F5Q1RkWWtKVlUwcTdJRVVsVTg9");
 
