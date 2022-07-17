@@ -9,6 +9,9 @@ namespace ContractsAndJobs.Data
     {
         Task<IEnumerable<Contact>> GetAllContactsAsync();
         Task<Contact> GetFullContact(int contactId);
+        Task AddContact(Contact contact);
+        Task UpdateContact(Contact contact);
+        Task DeleteContact(Contact contact);
     }
 
     public class ContractsAndJobsDataService : IContractsAndJobsDataService
@@ -50,6 +53,47 @@ namespace ContractsAndJobs.Data
             return GetContactFromDataModels(models);
         }
 
+        public async Task AddContact(Contact contact)
+        {
+            this.connection = new SqlConnection(ConnectionString);
+            await using var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "AddContact";
+            command.Parameters.AddWithValue("@firstName", contact.FirstName);
+            command.Parameters.AddWithValue("@lastName", contact.LastName);
+            command.Parameters.AddWithValue("@agency", string.IsNullOrEmpty(contact.Agency) ? DBNull.Value : contact.Agency);
+            await connection.OpenAsync();
+            await command.ExecuteNonQueryAsync();
+        }
+
+        public async Task UpdateContact(Contact contact)
+        {
+            this.connection = new SqlConnection(ConnectionString);
+            await using var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "UpdateContact";
+            command.Parameters.AddWithValue("@id", contact.Id);
+            command.Parameters.AddWithValue("@firstName", contact.FirstName);
+            command.Parameters.AddWithValue("@lastName", contact.LastName);
+            command.Parameters.AddWithValue("@agency", contact.Agency);
+            await connection.OpenAsync();
+            await command.ExecuteNonQueryAsync();
+        }
+
+        public async Task DeleteContact(Contact contact)
+        {
+            this.connection = new SqlConnection(ConnectionString);
+            await using var command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "DeleteContact";
+            command.Parameters.AddWithValue("@id", contact.Id);
+            await connection.OpenAsync();
+            await command.ExecuteNonQueryAsync();
+        }
+
         private static T GetObjectFromReader<T>(IDataReader reader)
         {
             var contactDataModel = (T)Activator.CreateInstance(typeof(T))!;
@@ -80,6 +124,7 @@ namespace ContractsAndJobs.Data
                     LastName = c.First().LastName,
                     Id = c.Key!.Value,
                     Interactions = c.GroupBy(i => i.InteractionId)
+                        .Where(i => i.Key.HasValue)
                         .Select(i => new Interaction
                         {
                             Id = i.Key!.Value,
@@ -90,9 +135,9 @@ namespace ContractsAndJobs.Data
                                 Type = (RoleTypes)i.First().Type!.Value,
                                 Id = i.First().RoleId!.Value,
                                 Company = i.First().Company,
-                                DayRate = i.First().DayRate!.HasValue ? i.First().DayRate!.Value : 0,
-                                Salary = i.First().Salary!.HasValue ? i.First().Salary!.Value : 0,
-                                InsideIr35 = i.First().InsideIr35!.HasValue && i.First().InsideIr35!.Value,
+                                DayRate = i.First().DayRate! ?? 0,
+                                Salary = i.First().Salary! ?? 0,
+                                InsideIr35 = i.First().InsideIr35! ?? false,
                                 Location = i.First().Location
                             }
                         })

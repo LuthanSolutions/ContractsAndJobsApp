@@ -11,9 +11,10 @@
     </div>
     <div class="row mt-2">
         <div class="col d-flex justify-content-center">
-            <div class="m-2"><SfButton>Add</SfButton></div>
-            <div class="m-2"><SfButton>Save</SfButton></div>
-            <div class="m-2"><SfButton>Delete</SfButton></div>
+            <div class="m-2"><SfButton @onclick="OnAddClick" Disabled="AddDisabled">Add</SfButton></div>
+            <div class="m-2"><SfButton @onclick="OnSaveClick" Disabled="SaveDisabled">Save</SfButton></div>
+            <div class="m-2"><SfButton @onclick="OnCancelClick" Disabled="CancelDisabled">Cancel</SfButton></div>
+            <div class="m-2"><SfButton @onclick="OnDeleteClick" Disabled="DeleteDisabled">Delete</SfButton></div>
         </div>
     </div>
     <div class="row mt-2">
