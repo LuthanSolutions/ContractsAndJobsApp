@@ -1,5 +1,7 @@
-﻿using ContractsAndJobs.ViewModels;
+﻿using ContractsAndJobs.Models;
+using ContractsAndJobs.ViewModels;
 using Microsoft.AspNetCore.Components;
+using Syncfusion.Blazor.Grids;
 
 namespace ContractsAndJobs.Pages;
 
@@ -15,5 +17,10 @@ public partial class AddContact
             await this.ViewModel!.InitialiseViewModel();
             this.StateHasChanged();
         }
+    }
+
+    private void ContactRowSelectHandler(RowSelectEventArgs<Contact> args)
+    {
+        this.ViewModel!.SelectedContact = args.Data;
     }
 }
