@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsAndJobs.ViewModels
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsAndJobs.Models", "ContractsAndJobs.Models\ContractsAndJobs.Models.csproj", "{9A57CCDD-3608-4E04-8575-C5E69AF87A18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractsAndJobs.Data", "ContractsAndJobs.Data\ContractsAndJobs.Data.csproj", "{7DDD735C-56AE-4F64-8324-9D573ADD89E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsAndJobs.Data", "ContractsAndJobs.Data\ContractsAndJobs.Data.csproj", "{7DDD735C-56AE-4F64-8324-9D573ADD89E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

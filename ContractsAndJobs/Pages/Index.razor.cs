@@ -3,25 +3,24 @@ using ContractsAndJobs.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.DropDowns;
 
-namespace ContractsAndJobs.Pages
+namespace ContractsAndJobs.Pages;
+
+public partial class Index
 {
-    public partial class Index
+    [Inject]
+    private IIndexViewModel? ViewModel { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        [Inject]
-        private IIndexViewModel? ViewModel { get; set; }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        if (firstRender)
         {
-            if (firstRender)
-            {
-                await this.ViewModel!.InitialiseViewModel();
-                this.StateHasChanged();
-            }
+            await this.ViewModel!.InitialiseViewModel();
+            this.StateHasChanged();
         }
+    }
 
-        private async Task SelectedPersonChangeHandler(ChangeEventArgs<string, Contact> args)
-        {
-            await this.ViewModel!.PopulateContact(args.ItemData.Id);
-        }
+    private async Task SelectedPersonChangeHandler(ChangeEventArgs<string, Contact> args)
+    {
+        await this.ViewModel!.PopulateContact(args.ItemData.Id);
     }
 }

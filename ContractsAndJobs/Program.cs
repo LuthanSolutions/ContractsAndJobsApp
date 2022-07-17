@@ -12,6 +12,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddTransient<IIndexViewModel, IndexViewModel>();
 builder.Services.AddTransient<IContractsAndJobsDataService, ContractsAndJobsDataService>();
+builder.Services.AddTransient<IAddContactViewModel, AddContactViewModel>();
 
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Njc3ODQ0QDMyMzAyZTMyMmUzMFJDcDhWZXRpdzlIalpFNVA3cGtSTzVkT0F5Q1RkWWtKVlUwcTdJRVVsVTg9");
 
