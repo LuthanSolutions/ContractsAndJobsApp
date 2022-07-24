@@ -5,11 +5,11 @@ namespace ContractsAndJobs.ViewModels
 {
     public interface IIndexViewModel
     {
-        Task InitialiseViewModel();
+        Task InitialiseViewModelAsync();
         List<Contact>? Contacts { get; set; }
         string? SelectedContact { get; set; }
         Contact? Contact { get; set; }
-        Task PopulateContact(int contactId);
+        Task PopulateContactAsync(int contactId);
     }
 
     public class IndexViewModel : IIndexViewModel
@@ -21,14 +21,14 @@ namespace ContractsAndJobs.ViewModels
             this.contractsAndJobsDataService = contractsAndJobsDataService;
         }
 
-        public async Task InitialiseViewModel()
+        public async Task InitialiseViewModelAsync()
         {
             this.Contacts = (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
         }
 
-        public async Task PopulateContact(int contactId)
+        public async Task PopulateContactAsync(int contactId)
         {
-            this.Contact = await this.contractsAndJobsDataService.GetFullContact(contactId);
+            this.Contact = await this.contractsAndJobsDataService.GetFullContactAsync(contactId);
         }
 
         public List<Contact>? Contacts { get; set; }

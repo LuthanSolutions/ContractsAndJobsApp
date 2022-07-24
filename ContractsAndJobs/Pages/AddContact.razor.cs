@@ -16,30 +16,26 @@ public partial class AddContact
     private bool CancelDisabled { get; set; } = true;
     private bool DeleteDisabled { get; set; } = true;
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
-        {
-            await this.ViewModel!.InitialiseViewModel();
-            this.StateHasChanged();
-        }
+        await this.ViewModel!.InitialiseViewModelAsync();
     }
 
-    private async Task OnAddClick(MouseEventArgs args)
+    private async Task OnAddClickAsync(MouseEventArgs args)
     {
-        await this.ViewModel!.AddContact();
+        await this.ViewModel!.AddContactAsync();
         this.SetDefaultState();
     }
 
-    private async Task OnSaveClick(MouseEventArgs args)
+    private async Task OnSaveClickAsync(MouseEventArgs args)
     {
-        await this.ViewModel!.UpdateContact();
+        await this.ViewModel!.UpdateContactAsync();
         this.SetDefaultState();
     }
 
-    private async Task OnDeleteClick(MouseEventArgs args)
+    private async Task OnDeleteClickAsync(MouseEventArgs args)
     {
-        await this.ViewModel!.DeleteContact();
+        await this.ViewModel!.DeleteContactAsync();
         this.SetDefaultState();
     }
 

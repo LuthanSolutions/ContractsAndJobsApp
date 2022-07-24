@@ -13,7 +13,7 @@
                         <label for="contactSearch">Contact Search</label>
                         <SfAutoComplete ID="contactSearch" TValue="string" TItem="Contact" DataSource="@this.ViewModel.Contacts" @bind-Value="@this.ViewModel.SelectedContact">
                             <AutoCompleteFieldSettings Value="FullName"></AutoCompleteFieldSettings>
-                            <AutoCompleteEvents TItem="Contact" TValue="string" ValueChange="@this.SelectedPersonChangeHandler"></AutoCompleteEvents>
+                            <AutoCompleteEvents TItem="Contact" TValue="string" ValueChange="@this.SelectedPersonChangeHandlerAsync"></AutoCompleteEvents>
                         </SfAutoComplete>
                         <div class="form-text">Enter part of first name, last name or agency name</div>
                     </div>

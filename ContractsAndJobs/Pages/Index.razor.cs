@@ -10,17 +10,14 @@ public partial class Index
     [Inject]
     private IIndexViewModel? ViewModel { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnInitializedAsync()
     {
-        if (firstRender)
-        {
-            await this.ViewModel!.InitialiseViewModel();
-            this.StateHasChanged();
-        }
+        await this.ViewModel!.InitialiseViewModelAsync();
     }
 
-    private async Task SelectedPersonChangeHandler(ChangeEventArgs<string, Contact> args)
+
+    private async Task SelectedPersonChangeHandlerAsync(ChangeEventArgs<string, Contact> args)
     {
-        await this.ViewModel!.PopulateContact(args.ItemData.Id);
+        await this.ViewModel!.PopulateContactAsync(args.ItemData.Id);
     }
 }

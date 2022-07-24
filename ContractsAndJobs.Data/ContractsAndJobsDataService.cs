@@ -8,10 +8,10 @@ namespace ContractsAndJobs.Data
     public interface IContractsAndJobsDataService
     {
         Task<IEnumerable<Contact>> GetAllContactsAsync();
-        Task<Contact> GetFullContact(int contactId);
-        Task AddContact(Contact contact);
-        Task UpdateContact(Contact contact);
-        Task DeleteContact(Contact contact);
+        Task<Contact> GetFullContactAsync(int contactId);
+        Task AddContactAsync(Contact contact);
+        Task UpdateContactAsync(Contact contact);
+        Task DeleteContactAsync(Contact contact);
     }
 
     public class ContractsAndJobsDataService : IContractsAndJobsDataService
@@ -35,7 +35,7 @@ namespace ContractsAndJobs.Data
             return contacts;
         }
 
-        public async Task<Contact> GetFullContact(int contactId)
+        public async Task<Contact> GetFullContactAsync(int contactId)
         {
             var models = new List<ContactDataModel>();
             this.connection = new SqlConnection(ConnectionString);
@@ -53,7 +53,7 @@ namespace ContractsAndJobs.Data
             return GetContactFromDataModels(models);
         }
 
-        public async Task AddContact(Contact contact)
+        public async Task AddContactAsync(Contact contact)
         {
             this.connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();
@@ -67,7 +67,7 @@ namespace ContractsAndJobs.Data
             await command.ExecuteNonQueryAsync();
         }
 
-        public async Task UpdateContact(Contact contact)
+        public async Task UpdateContactAsync(Contact contact)
         {
             this.connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();
@@ -82,7 +82,7 @@ namespace ContractsAndJobs.Data
             await command.ExecuteNonQueryAsync();
         }
 
-        public async Task DeleteContact(Contact contact)
+        public async Task DeleteContactAsync(Contact contact)
         {
             this.connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();

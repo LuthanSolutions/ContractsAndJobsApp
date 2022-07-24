@@ -5,12 +5,12 @@ namespace ContractsAndJobs.ViewModels
 {
     public interface IAddContactViewModel
     {
-        Task InitialiseViewModel();
+        Task InitialiseViewModelAsync();
         List<Contact>? Contacts { get; set; }
         Contact? SelectedContact { get; set; }
-        Task AddContact();
-        Task UpdateContact();
-        Task DeleteContact();
+        Task AddContactAsync();
+        Task UpdateContactAsync();
+        Task DeleteContactAsync();
     }
 
     public class AddContactViewModel : IAddContactViewModel
@@ -25,36 +25,36 @@ namespace ContractsAndJobs.ViewModels
             this.contractsAndJobsDataService = contractsAndJobsDataService;
         }
 
-        public async Task InitialiseViewModel()
+        public async Task InitialiseViewModelAsync()
         {
             this.Contacts = (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
         }
 
-        public async Task AddContact()
+        public async Task AddContactAsync()
         {
             if (this.SelectedContact != null && (!string.IsNullOrEmpty(this.SelectedContact.FirstName) || !string.IsNullOrEmpty(this.SelectedContact.LastName)))
             {
-                await this.contractsAndJobsDataService.AddContact(this.SelectedContact);
+                await this.contractsAndJobsDataService.AddContactAsync(this.SelectedContact);
                 this.Contacts = (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
                 this.SelectedContact = new Contact();
             }
         }
 
-        public async Task UpdateContact()
+        public async Task UpdateContactAsync()
         {
             if (this.SelectedContact is {Id: > 0} && (!string.IsNullOrEmpty(this.SelectedContact.FirstName) || !string.IsNullOrEmpty(this.SelectedContact.LastName)))
             {
-                await this.contractsAndJobsDataService.UpdateContact(this.SelectedContact);
+                await this.contractsAndJobsDataService.UpdateContactAsync(this.SelectedContact);
                 this.Contacts = (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
                 this.SelectedContact = new Contact();
             }
         }
 
-        public async Task DeleteContact()
+        public async Task DeleteContactAsync()
         {
             if (this.SelectedContact is {Id: > 0})
             {
-                await this.contractsAndJobsDataService.DeleteContact(this.SelectedContact);
+                await this.contractsAndJobsDataService.DeleteContactAsync(this.SelectedContact);
                 this.Contacts = (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
                 this.SelectedContact = new Contact();
             }
