@@ -8,19 +8,19 @@
   
   <ItemGroup>
       <PackageReference Include="EntityFramework" Version="6.4.4" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.8">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.2.0.38" />
-      <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.2.0.38" />
-      <PackageReference Include="Syncfusion.Blazor.Grid" Version="20.2.0.38" />
-    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.2.0.38" />
-    <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.2.0.38" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Components\" />
+      <PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.2.0.48" />
+      <PackageReference Include="Syncfusion.Blazor.Cards" Version="20.2.0.48" />
+      <PackageReference Include="Syncfusion.Blazor.Charts" Version="20.2.0.48" />
+      <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.2.0.48" />
+      <PackageReference Include="Syncfusion.Blazor.Grid" Version="20.2.0.48" />
+      <PackageReference Include="Syncfusion.Blazor.Layouts" Version="20.2.0.48" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.2.0.48" />
+    <PackageReference Include="Syncfusion.Blazor.Sparkline" Version="20.2.0.48" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.2.0.48" />
   </ItemGroup>
   
   <ItemGroup>
