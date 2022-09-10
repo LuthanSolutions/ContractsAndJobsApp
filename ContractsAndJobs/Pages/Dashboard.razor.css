@@ -1,0 +1,12 @@
+﻿::deep #fixed-height-card {
+    height: 100%;
+}
+
+::deep .e-card .e-card-header {
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+::deep .e-card .e-card-content {
+    overflow-y: auto;
+}
