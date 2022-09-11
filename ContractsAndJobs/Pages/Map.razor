@@ -1,0 +1,11 @@
+﻿@page "/map"
+
+<div>
+    <SfMaps Height="50rem" Width="90%">
+        <MapsZoomSettings Enable="true" EnablePanning="true" MaxZoom="20"></MapsZoomSettings>
+        <MapsLayers>
+            <MapsLayer UrlTemplate="@MapUrl" TValue="string">
+            </MapsLayer>
+        </MapsLayers>
+    </SfMaps>
+</div>

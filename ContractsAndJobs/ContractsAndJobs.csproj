@@ -18,6 +18,7 @@
 		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.2.0.48" />
 		<PackageReference Include="Syncfusion.Blazor.Grid" Version="20.2.0.48" />
 		<PackageReference Include="Syncfusion.Blazor.Layouts" Version="20.2.0.48" />
+		<PackageReference Include="Syncfusion.Blazor.Maps" Version="20.2.0.48" />
 		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.2.0.48" />
 		<PackageReference Include="Syncfusion.Blazor.Sparkline" Version="20.2.0.48" />
 		<PackageReference Include="Syncfusion.Blazor.Themes" Version="20.2.0.48" />
