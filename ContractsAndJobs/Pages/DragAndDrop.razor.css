@@ -1,0 +1,15 @@
+﻿.dd-row{
+    margin-top: 5rem;
+}
+
+.dd-item{
+    margin: 1rem;
+    padding: 1rem;
+    border: solid 0.1rem;
+    box-shadow: .05rem .1rem #888888;
+    cursor: move;
+}
+
+.col.over {
+    border: 3px dotted #666;
+}
