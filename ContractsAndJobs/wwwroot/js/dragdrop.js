@@ -48,6 +48,17 @@ function handleDragEnd(e) {
     });
 }
 
+function signalDragEnd(dotNetHelper) {
+    let items = document.querySelectorAll('.container .draggable');
+    items.forEach(function (item) {
+        item.ondragend = callStateHasChanged;
+    });
+
+    function callStateHasChanged() {
+        dotNetHelper.invokeMethodAsync('CallStateHasChanged');
+    }
+}
+
 
 let items = document.querySelectorAll('.container .draggable');
 items.forEach(function (item) {
