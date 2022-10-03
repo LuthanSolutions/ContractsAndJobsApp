@@ -20,10 +20,19 @@ public partial class DragAndDrop
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    [JSInvokable("CallStateHasChanged")]
-    public async Task CallStateHasChanged()
+    private string? startId { get; set; }
+    private string? stopId { get; set; }
+
+    [JSInvokable("DragStarted")]
+    public async Task DragStarted(string target)
     {
-        await InvokeAsync(StateHasChanged);
+        startId = target;
+    }
+
+    [JSInvokable("ItemDropped")]
+    public async Task ItemDropped(string target)
+    {
+        stopId = target;
     }
 
     private void OnButtonClicked(string message)

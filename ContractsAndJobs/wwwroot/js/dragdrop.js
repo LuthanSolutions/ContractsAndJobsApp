@@ -51,11 +51,16 @@ function handleDragEnd(e) {
 function signalDragEnd(dotNetHelper) {
     let items = document.querySelectorAll('.container .draggable');
     items.forEach(function (item) {
-        item.ondragend = callStateHasChanged;
+        item.addEventListener('dragstart', callDragStarted, item)
+        item.addEventListener('drop', callItemDropped, item)
     });
 
-    function callStateHasChanged() {
-        dotNetHelper.invokeMethodAsync('CallStateHasChanged');
+    function callDragStarted(item) {
+        dotNetHelper.invokeMethodAsync('DragStarted', item.currentTarget.id.toString());
+    }
+
+    function callItemDropped(item) {
+        dotNetHelper.invokeMethodAsync('ItemDropped', item.currentTarget.id.toString());
     }
 }
 

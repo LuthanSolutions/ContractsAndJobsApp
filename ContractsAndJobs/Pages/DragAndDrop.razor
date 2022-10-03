@@ -4,21 +4,21 @@
 
 <div class="container dd-row">
     <div class="row">
-        <div class="col dd-item draggable" draggable="true">
+        <div id="1" class="col dd-item draggable" draggable="true">
             <div style="background-color: aquamarine">
                 <label for="textBox1">Column 1</label>
                 <SfTextBox ID="textBox1"></SfTextBox>
             </div>
             <button @onclick="@(() => this.OnButtonClicked("Button 1"))">Click</button>
         </div>
-        <div class="col dd-item draggable" draggable="true">
+        <div id="2" class="col dd-item draggable" draggable="true">
             <div style="background-color: burlywood">
                 <label for="textBox2">Column 2</label>
                 <SfTextBox ID="textBox2"></SfTextBox>
             </div>
             <button @onclick="@(() => this.OnButtonClicked("Button 2"))">Click</button>
         </div>
-        <div class="col dd-item draggable" draggable="true">
+        <div id="3" class="col dd-item draggable" draggable="true">
             <div style="background-color: cornflowerblue">
                 <label for="textBox3">Column 3</label>
                 <SfTextBox ID="textBox3"></SfTextBox>
