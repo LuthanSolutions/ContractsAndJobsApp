@@ -7,6 +7,7 @@
                 <ContentTemplate>
                     <SfSparkline DataSource="PopulationData" TValue="PopulationReport" XName="Year" YName="Population" Type="SparklineType.Pie">
                     </SfSparkline>
+                    <SfButton OnClick="@this.OnButtonClicked">Click</SfButton>
                 </ContentTemplate>
             </DashboardLayoutPanel>
 
@@ -28,7 +29,7 @@
                             @cardContent
                         </CardContent>
                         <CardFooter>
-                            This is the card footer text
+                            This is the card footer
                         </CardFooter>
                     </SfCard>
                 </ContentTemplate>
@@ -40,6 +41,9 @@
                     <SfCard>
                         <CardHeader Title="Debunking Five Data Science Myths" SubTitle="By John Doe | Jan 20, 2018" />
                         <CardContent Content="Tech evangelists are currently pounding their pulpits about all things AI, machine learning, analytics—anything that sounds like the future and probably involves lots of numbers. Many of these topics can be grouped under the intimidating term data science." />
+                        <CardFooter>
+                            <SfButton OnClick="@this.OnButtonClicked">Click</SfButton>
+                        </CardFooter>
                     </SfCard>
                 </ContentTemplate>
             </DashboardLayoutPanel>

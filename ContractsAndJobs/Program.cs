@@ -1,4 +1,5 @@
 ﻿using ContractsAndJobs.Data;
+using ContractsAndJobs.Services;
 using ContractsAndJobs.ViewModels;
 using Syncfusion.Blazor;
 using Syncfusion.Blazor.Popups;
@@ -14,6 +15,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddTransient<IIndexViewModel, IndexViewModel>();
 builder.Services.AddTransient<IContractsAndJobsDataService, ContractsAndJobsDataService>();
 builder.Services.AddTransient<IAddContactViewModel, AddContactViewModel>();
+builder.Services.AddTransient<IBrowserService, BrowserService>();
 
 builder.Services.AddScoped<SfDialogService>();
 

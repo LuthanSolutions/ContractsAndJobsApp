@@ -1,0 +1,19 @@
+﻿@page "/dragandroplistboxes"
+
+@using Syncfusion.Blazor.DropDowns
+
+<div id="listbox1">
+    <h4>Group A</h4>
+    <SfListBox TValue="string[]" DataSource="@GroupA" AllowDragAndDrop="true" Scope="combined-list" Height="290px" TItem="CountryCode">
+        <ListBoxFieldSettings Text="Name" Value="Code" />
+    </SfListBox>
+</div>
+<div id="listbox2">
+    <h4>Group B</h4>
+    <SfListBox TValue="string[]" DataSource="@GroupB" Scope="combined-list" AllowDragAndDrop="true" Height="290px" TItem="CountryCode">
+        <ListBoxFieldSettings Text="Name" Value="Code" />
+    </SfListBox>
+</div>
+<div>
+    <SfButton OnClick="@this.OnButtonClicked">Click</SfButton>
+</div>
