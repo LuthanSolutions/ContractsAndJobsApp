@@ -14,8 +14,8 @@ public partial class DragAndDrop
     {
         if (firstRender)
         {
-            await this.JSRuntime!.InvokeVoidAsync("import", "./js/dragdrop.js");
-            await this.JSRuntime!.InvokeVoidAsync("signalDragEnd", DotNetObjectReference.Create(this));
+            await JSRuntime!.InvokeVoidAsync("import", "./js/dragdrop.js");
+            await JSRuntime!.InvokeVoidAsync("signalDragEnd", DotNetObjectReference.Create(this));
         }
         await base.OnAfterRenderAsync(firstRender);
     }

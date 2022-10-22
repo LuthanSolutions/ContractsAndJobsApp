@@ -188,3 +188,7 @@ app {
         display: block;
     }
 }
+
+:root {
+    --toast-background-colour: blue;
+}

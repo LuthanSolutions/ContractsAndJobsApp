@@ -1,7 +1,7 @@
-﻿using System.Data;
+﻿using ContractsAndJobs.Data.DataModels;
 using ContractsAndJobs.Models;
+using System.Data;
 using System.Data.SqlClient;
-using ContractsAndJobs.Data.DataModels;
 
 namespace ContractsAndJobs.Data
 {
@@ -21,7 +21,7 @@ namespace ContractsAndJobs.Data
         public async Task<IEnumerable<Contact>> GetAllContactsAsync()
         {
             var contacts = new List<Contact>();
-            this.connection = new SqlConnection(ConnectionString);
+            connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.StoredProcedure;
@@ -38,7 +38,7 @@ namespace ContractsAndJobs.Data
         public async Task<Contact> GetFullContactAsync(int contactId)
         {
             var models = new List<ContactDataModel>();
-            this.connection = new SqlConnection(ConnectionString);
+            connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.StoredProcedure;
@@ -55,7 +55,7 @@ namespace ContractsAndJobs.Data
 
         public async Task AddContactAsync(Contact contact)
         {
-            this.connection = new SqlConnection(ConnectionString);
+            connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.StoredProcedure;
@@ -69,7 +69,7 @@ namespace ContractsAndJobs.Data
 
         public async Task UpdateContactAsync(Contact contact)
         {
-            this.connection = new SqlConnection(ConnectionString);
+            connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.StoredProcedure;
@@ -84,7 +84,7 @@ namespace ContractsAndJobs.Data
 
         public async Task DeleteContactAsync(Contact contact)
         {
-            this.connection = new SqlConnection(ConnectionString);
+            connection = new SqlConnection(ConnectionString);
             await using var command = new SqlCommand();
             command.Connection = connection;
             command.CommandType = CommandType.StoredProcedure;

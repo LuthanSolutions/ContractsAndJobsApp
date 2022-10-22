@@ -24,13 +24,13 @@ namespace ContractsAndJobs.Services
             this.jsRuntime = jsRuntime;
         }
 
-        public async Task ShowAlertMessage(string message) => 
+        public async Task ShowAlertMessage(string message) =>
             await jsRuntime!.InvokeVoidAsync(AlertCommand, message);
- 
-        public async Task<bool> GetConfirmation(string message) => 
+
+        public async Task<bool> GetConfirmation(string message) =>
             await jsRuntime!.InvokeAsync<bool>(ConfirmCommand, message);
 
-        public async Task<string> GetUserInput(string message) => 
+        public async Task<string> GetUserInput(string message) =>
             await jsRuntime!.InvokeAsync<string>(PromptCommand, message);
     }
 }

@@ -23,12 +23,12 @@ namespace ContractsAndJobs.ViewModels
 
         public async Task InitialiseViewModelAsync()
         {
-            this.Contacts = (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
+            Contacts = (await contractsAndJobsDataService.GetAllContactsAsync()).ToList();
         }
 
         public async Task PopulateContactAsync(int contactId)
         {
-            this.Contact = await this.contractsAndJobsDataService.GetFullContactAsync(contactId);
+            Contact = await contractsAndJobsDataService.GetFullContactAsync(contactId);
         }
 
         public List<Contact>? Contacts { get; set; }

@@ -1,0 +1,30 @@
+﻿@using Syncfusion.Blazor.Notifications;
+
+<SfToast @ref="Toast" Timeout="@this.Options.Timeout"> 
+    <ToastTemplates>  
+        <Title>  
+            @Options.Title  
+        </Title>  
+        <Content>  
+            @Options.Content  
+        </Content>  
+    </ToastTemplates>  
+    <ToastPosition X="@this.Options.PositionX" Y="@this.Options.PositionY"></ToastPosition>
+</SfToast> 
+
+<style>
+
+    .e-toast-container .e-toast {
+        background-color: var(--toast-background-colour);
+        opacity: 0.8;
+    }
+
+    .e-toast-container .e-toast .e-toast-message .e-toast-content {
+        color: white;
+    }
+
+    .e-toast-container .e-toast .e-toast-message .e-toast-title {
+        color: white;
+    }
+
+</style>

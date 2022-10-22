@@ -16,17 +16,17 @@ public partial class Index
 
     protected override async Task OnInitializedAsync()
     {
-        await this.ViewModel!.InitialiseViewModelAsync();
+        await ViewModel!.InitialiseViewModelAsync();
     }
 
     private async Task SelectedPersonChangeHandlerAsync(ChangeEventArgs<string, Contact> args)
     {
-        await this.ViewModel!.PopulateContactAsync(args.ItemData.Id);
+        await ViewModel!.PopulateContactAsync(args.ItemData.Id);
     }
 
-    private async Task ShowAlert() => 
+    private async Task ShowAlert() =>
         await DialogService!.AlertAsync(
-            "This is the alert content", 
+            "This is the alert content",
             "Title",
             new DialogOptions
             {

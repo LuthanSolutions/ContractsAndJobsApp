@@ -1,5 +1,6 @@
 ﻿using ContractsAndJobs.Data;
 using ContractsAndJobs.Services;
+using ContractsAndJobs.Services.ToastService;
 using ContractsAndJobs.ViewModels;
 using Syncfusion.Blazor;
 using Syncfusion.Blazor.Popups;
@@ -16,11 +17,12 @@ builder.Services.AddTransient<IIndexViewModel, IndexViewModel>();
 builder.Services.AddTransient<IContractsAndJobsDataService, ContractsAndJobsDataService>();
 builder.Services.AddTransient<IAddContactViewModel, AddContactViewModel>();
 builder.Services.AddTransient<IBrowserService, BrowserService>();
+builder.Services.AddScoped<IToastService, ToastService>();
 
 builder.Services.AddScoped<SfDialogService>();
 
 
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Njc3ODQ0QDMyMzAyZTMyMmUzMFJDcDhWZXRpdzlIalpFNVA3cGtSTzVkT0F5Q1RkWWtKVlUwcTdJRVVsVTg9");
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzQ1NDU1QDMyMzAyZTMzMmUzMGg5a3EvQXB3SG1ZY2dMenJDRy9wVmYwbW5aVGdBU0RONnNkSFl2UTIyNDA9");
 
 var app = builder.Build();
 

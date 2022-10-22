@@ -1,6 +1,6 @@
 ﻿using ContractsAndJobs.Services;
+using ContractsAndJobs.Services.ToastService;
 using Microsoft.AspNetCore.Components;
-using Microsoft.JSInterop;
 
 namespace ContractsAndJobs.Pages
 {
@@ -8,6 +8,9 @@ namespace ContractsAndJobs.Pages
     {
         [Inject]
         private IBrowserService? BrowserService { get; set; }
+
+        [Inject]
+        private IToastService? ToastService { get; set; }
 
         public class PopulationReport
         {
@@ -38,9 +41,15 @@ namespace ContractsAndJobs.Pages
 
         private async Task OnButtonClicked()
         {
-            await BrowserService!.ShowAlertMessage("Button Clicked!");
-            var confirm = await BrowserService!.GetConfirmation("Are you sure you want to do this?");
-            var input = await BrowserService!.GetUserInput("What is your full name?");
+            //await BrowserService!.ShowAlertMessage("Button Clicked!");
+            //var confirm = await BrowserService!.GetConfirmation("Are you sure you want to do this?");
+            //var input = await BrowserService!.GetUserInput("What is your full name?");
+            this.ToastService!.ShowToast(new ToastOption()
+            {
+                Title = "Toast Title",
+                Content = "Toast content",
+                ToastPosition = ToastPositions.BottomRight
+            });
         }
 
     }

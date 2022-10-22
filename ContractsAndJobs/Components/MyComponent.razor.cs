@@ -32,8 +32,8 @@ public partial class MyComponent
 
     protected override void OnParametersSet()
     {
-        this.shouldRender = this.CheckShouldRenderAndSetPropertyFields();
-        if (this.shouldRender)
+        shouldRender = CheckShouldRenderAndSetPropertyFields();
+        if (shouldRender)
         {
             base.OnParametersSet();
         }
@@ -42,21 +42,21 @@ public partial class MyComponent
 
     private bool CheckShouldRenderAndSetPropertyFields()
     {
-        var retVal = this.ItemId != this.itemId 
-            || this.ItemName != this.itemName 
-            || this.Dob != this.dob 
-            || this.Contact?.Id != this.contact?.Id;
+        var retVal = ItemId != itemId
+            || ItemName != itemName
+            || Dob != dob
+            || Contact?.Id != contact?.Id;
         if (retVal)
         {
-            this.itemId = this.ItemId;
-            this.itemName = this.ItemName;
-            this.dob = this.Dob;
-            this.contact = this.Contact;
+            itemId = ItemId;
+            itemName = ItemName;
+            dob = Dob;
+            contact = Contact;
         }
         return retVal;
     }
 
-    protected override bool ShouldRender() => this.shouldRender;
+    protected override bool ShouldRender() => shouldRender;
 
     protected override void OnAfterRender(bool firstRender)
     {

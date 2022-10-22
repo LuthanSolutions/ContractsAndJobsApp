@@ -1,6 +1,9 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime JS
+
 @using Syncfusion.Blazor.Navigations
+@using ContractsAndJobs.Components.ToastComponent
+
 <PageTitle>ContractsAndJobs</PageTitle>
 <SfSidebar ID="Sidebar" Type="SidebarType.Over" Width="300px" DockSize="65px" EnableDock="true" @ref="Sidebar" @bind-IsOpen="SidebarToggle">
     <div class="sidebar" style="position:fixed;z-index:1200">
@@ -20,6 +23,8 @@
         @Body
     </div>
 </div>
+<ToastComponent />
+
 <style>
     .sidebar {
         width: 300px;
