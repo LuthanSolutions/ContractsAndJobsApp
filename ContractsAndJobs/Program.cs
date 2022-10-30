@@ -21,6 +21,8 @@ builder.Services.AddScoped<IToastService, ToastService>();
 
 builder.Services.AddScoped<SfDialogService>();
 
+builder.Services.AddScoped<IStaticViewModel, StaticViewModel>(sp => StaticViewModel.Create().Result);
+builder.Services.AddScoped<ILazyViewModel, LazyViewModel>();
 
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzQ1NDU1QDMyMzAyZTMzMmUzMGg5a3EvQXB3SG1ZY2dMenJDRy9wVmYwbW5aVGdBU0RONnNkSFl2UTIyNDA9");
 
