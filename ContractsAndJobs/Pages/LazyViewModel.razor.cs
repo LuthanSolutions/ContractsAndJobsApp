@@ -9,12 +9,12 @@ namespace ContractsAndJobs.Pages
         [Inject]
         private ILazyViewModel? ViewModel { get; set; }
 
-        private List<Person>? People = null;
+        private List<Contact>? Contacts = null;
 
 
         protected override async Task OnParametersSetAsync()
         {
-            this.People = await this.ViewModel!.People;
+            this.Contacts = await this.ViewModel!.Contacts;
         }
     }
 }

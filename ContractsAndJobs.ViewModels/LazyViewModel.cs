@@ -1,24 +1,30 @@
-﻿using ContractsAndJobs.Models;
+﻿using ContractsAndJobs.Data;
+using ContractsAndJobs.Models;
 using System.Runtime.CompilerServices;
 
 namespace ContractsAndJobs.ViewModels
 {
     public interface ILazyViewModel
     {
-        AsyncLazy<List<Person>> People { get; }
+        AsyncLazy<List<Contact>> Contacts { get; }
     }
 
     public class LazyViewModel : ILazyViewModel
     {
-        private static readonly AsyncLazy<List<Person>> people = 
-            new(() => GetAllPeople());
+        private readonly IContractsAndJobsDataService contractsAndJobsDataService;
 
-        public AsyncLazy<List<Person>> People => people;
-
-        private static async Task<List<Person>> GetAllPeople()
+        public LazyViewModel(IContractsAndJobsDataService contractsAndJobsDataService)
         {
-            await Task.Delay(2000);
-            return new List<Person> { new Person(), new Person(), new Person() };
+            this.contractsAndJobsDataService = contractsAndJobsDataService;
+        }
+
+        private AsyncLazy<List<Contact>> contacts => new(() => GetAllContacts());
+
+        public AsyncLazy<List<Contact>> Contacts => contacts;
+
+        private async Task<List<Contact>> GetAllContacts()
+        {
+            return (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
         }
     }
 
