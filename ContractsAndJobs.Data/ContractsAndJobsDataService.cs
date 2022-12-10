@@ -1,5 +1,6 @@
 ﻿using ContractsAndJobs.Data.DataModels;
 using ContractsAndJobs.Models;
+using DataServices.Services;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -16,8 +17,16 @@ namespace ContractsAndJobs.Data
 
     public class ContractsAndJobsDataService : IContractsAndJobsDataService
     {
+        private readonly IDataService dataService;
+
         private SqlConnection? connection;
         private const string ConnectionString = "data source=LUTHANSOLUTIONS;initial catalog=ContractsAndJobs;trusted_connection=true";
+
+        public ContractsAndJobsDataService(IDataService dataService)
+        {
+            this.dataService = dataService;
+        }
+
         public async Task<IEnumerable<Contact>> GetAllContactsAsync()
         {
             var contacts = new List<Contact>();
@@ -30,7 +39,7 @@ namespace ContractsAndJobs.Data
             var reader = await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                contacts.Add(GetObjectFromReader<Contact>(reader));
+                contacts.Add(dataService.GetObjectFromReader<Contact>(reader));
             }
             return contacts;
         }
@@ -48,7 +57,7 @@ namespace ContractsAndJobs.Data
             var reader = await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                models.Add(GetObjectFromReader<ContactDataModel>(reader));
+                models.Add(dataService.GetObjectFromReader<ContactDataModel>(reader));
             }
             return GetContactFromDataModels(models);
         }
@@ -92,25 +101,6 @@ namespace ContractsAndJobs.Data
             command.Parameters.AddWithValue("@id", contact.Id);
             await connection.OpenAsync();
             await command.ExecuteNonQueryAsync();
-        }
-
-        private static T GetObjectFromReader<T>(IDataReader reader)
-        {
-            var contactDataModel = (T)Activator.CreateInstance(typeof(T))!;
-            foreach (var property in contactDataModel.GetType().GetProperties())
-            {
-                if (!DataReaderHasColumn(reader, property.Name)) continue;
-                if (reader.IsDBNull(reader.GetOrdinal(property.Name))) continue;
-                property.SetValue(contactDataModel, reader[property.Name]);
-            }
-            return contactDataModel;
-        }
-
-        private static bool DataReaderHasColumn(IDataReader reader, string columnName)
-        {
-            var schemaTable = reader.GetSchemaTable()!;
-            var rows = schemaTable.Rows.OfType<DataRow>();
-            return rows.Any(row => row["ColumnName"].ToString() == columnName);
         }
 
         private static Contact GetContactFromDataModels(IEnumerable<ContactDataModel> dataModels)

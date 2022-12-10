@@ -1,0 +1,25 @@
+﻿
+.e-card {
+    border-color: var(--card-border-colour);
+    min-width: 20rem;
+    height: 100%;
+}
+
+    .e-card .e-card-header {
+        padding-top: 0.25rem !important;
+        padding-bottom: 0.25rem !important;
+        margin-top: 0rem !important;
+        margin-bottom: 0rem !important;
+        background-color: var(--card-header-background-colour);
+        text-align: center;
+    }
+
+.e-card .e-card-header .e-card-header-caption .e-card-header-title {
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+}
+
+.e-card .e-card-content {
+    padding: 1rem;
+    height: 100%;
+}

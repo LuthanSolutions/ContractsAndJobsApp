@@ -8,6 +8,8 @@ namespace ContractsAndJobs.Pages;
 
 public partial class Index
 {
+    SfAutoComplete<string, Contact>? contactSearch;
+
     [Inject]
     private IIndexViewModel? ViewModel { get; set; }
 
@@ -17,6 +19,14 @@ public partial class Index
     protected override async Task OnInitializedAsync()
     {
         await ViewModel!.InitialiseViewModelAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            await contactSearch!.FocusAsync();
+        }
     }
 
     private async Task SelectedPersonChangeHandlerAsync(ChangeEventArgs<string, Contact> args)

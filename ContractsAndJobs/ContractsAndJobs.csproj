@@ -28,6 +28,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\ContractsAndJobs.Services\ContractsAndJobs.Services.csproj" />
 		<ProjectReference Include="..\ContractsAndJobs.ViewModels\ContractsAndJobs.ViewModels.csproj" />
+		<ProjectReference Include="..\DataServices\DataServices.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

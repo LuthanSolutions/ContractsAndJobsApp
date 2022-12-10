@@ -1,14 +1,54 @@
 ﻿@page "/controltests"
 
-<h1>Page Header</h1>
-
-<div>
-    <SfCard CssClass="my-card">
-        <CardHeader>
-            Header Text
-        </CardHeader>
-        <CardContent>
-            Content Text
-        </CardContent>
-    </SfCard>
+<div class="container">
+    <div class="row g-2">
+        <div class="col p-2">
+            <SfCard>
+                <CardHeader Title="Title Text"></CardHeader>
+                <CardContent>
+                    Select first and second person
+                    <SfDropDownList TItem="string" TValue="string" DataSource="@dropdownItems" Placeholder="First person" FloatLabelType="FloatLabelType.Auto" ShowClearButton="true"/>
+                    <SfDropDownList TItem="string" TValue="string" DataSource="@dropdownItems" Placeholder="Second person" FloatLabelType="FloatLabelType.Auto" ShowClearButton="true"/>
+                </CardContent>
+            </SfCard>
+        </div>
+        <div class="col p-2">
+            <SfCard>
+                <CardHeader Title="Title Text"></CardHeader>
+                <CardContent>
+                    Content Text
+                </CardContent>
+            </SfCard>
+        </div>
+        <div class="col p-2">
+            <SfCard>
+                <CardHeader Title="Title Text"></CardHeader>
+                <CardContent>
+                    Content Text
+                </CardContent>
+            </SfCard>
+        </div>
+    </div>
+    <div class="row g-2">
+        <div class="col p-2">
+            <SfCard>
+                <CardHeader Title="Title Text"></CardHeader>
+                <CardContent>
+                    Content Text
+                </CardContent>
+            </SfCard>
+        </div>
+        <div class="col p-2">
+            <SfCard>
+                <CardHeader Title="Title Text"></CardHeader>
+                <CardContent>
+                    Content Text
+                </CardContent>
+            </SfCard>
+        </div>
+    </div>
 </div>
+
+@code{
+    private List<string> dropdownItems = new(){"Glen Wilkin", "Jana Statute", "Michael Mouse", "Minnie Mouse"};
+}

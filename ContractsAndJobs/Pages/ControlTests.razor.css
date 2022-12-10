@@ -1,13 +1,1 @@
-﻿h1{
-    background-color: red;
-}
-
-::deep .my-card {
-    width: 50% !important;
-    height: 50% !important;
-    background-color: azure !important;
-}
-
-::deep .e-card .e-card-header{
-    color: red;
-}
+﻿

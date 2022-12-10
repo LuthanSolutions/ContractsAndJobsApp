@@ -11,7 +11,7 @@
                 <form>
                     <div class="mb-3">
                         <label for="contactSearch">Contact Search</label>
-                        <SfAutoComplete ID="contactSearch" TValue="string" TItem="Contact" DataSource="@this.ViewModel.Contacts" @bind-Value="@this.ViewModel.SelectedContact">
+                        <SfAutoComplete @ref="contactSearch" ID="contactSearch" TValue="string" TItem="Contact" DataSource="@this.ViewModel.Contacts" @bind-Value="@this.ViewModel.SelectedContact">
                             <AutoCompleteFieldSettings Value="FullName"></AutoCompleteFieldSettings>
                             <AutoCompleteEvents TItem="Contact" TValue="string" ValueChange="@this.SelectedPersonChangeHandlerAsync"></AutoCompleteEvents>
                         </SfAutoComplete>

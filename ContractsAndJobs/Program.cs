@@ -2,6 +2,7 @@
 using ContractsAndJobs.Services;
 using ContractsAndJobs.Services.ToastService;
 using ContractsAndJobs.ViewModels;
+using DataServices.Services;
 using Syncfusion.Blazor;
 using Syncfusion.Blazor.Popups;
 
@@ -18,6 +19,7 @@ builder.Services.AddTransient<IContractsAndJobsDataService, ContractsAndJobsData
 builder.Services.AddTransient<IAddContactViewModel, AddContactViewModel>();
 builder.Services.AddTransient<IBrowserService, BrowserService>();
 builder.Services.AddScoped<IToastService, ToastService>();
+builder.Services.AddTransient<IDataService, DataService>();
 
 builder.Services.AddScoped<SfDialogService>();
 
