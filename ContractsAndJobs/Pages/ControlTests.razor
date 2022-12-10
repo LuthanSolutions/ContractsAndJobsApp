@@ -4,7 +4,7 @@
     <div class="row g-2">
         <div class="col p-2">
             <SfCard>
-                <CardHeader Title="Title Text"></CardHeader>
+                <CardHeader Title="People"></CardHeader>
                 <CardContent>
                     Select first and second person
                     <SfDropDownList TItem="string" TValue="string" DataSource="@dropdownItems" Placeholder="First person" FloatLabelType="FloatLabelType.Auto" ShowClearButton="true"/>
@@ -16,7 +16,10 @@
             <SfCard>
                 <CardHeader Title="Title Text"></CardHeader>
                 <CardContent>
-                    Content Text
+                    <div class="pb-3">
+                        Select Date
+                    </div>
+                    <SfCalendar TValue="DateTime"/>
                 </CardContent>
             </SfCard>
         </div>

@@ -1,1 +1,3 @@
-﻿
+﻿::deep .e-calendar, ::deep .e-bigger.e-small .e-calendar {
+    max-width: none !important;
+}
