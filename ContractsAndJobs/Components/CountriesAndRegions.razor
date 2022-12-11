@@ -1,0 +1,18 @@
+﻿<SfDropDownList TItem="@Country"
+                TValue="@Country"
+                DataSource="@CountriesToShow"
+                @bind-Value="@SelectedCountry"
+                Placeholder="Country"
+                FloatLabelType="FloatLabelType.Auto"
+                ShowClearButton="true">
+    <DropDownListFieldSettings Value="Name"></DropDownListFieldSettings>
+</SfDropDownList>
+<SfDropDownList TItem="@Region"
+                TValue="@Region"
+                DataSource="@RegionsToShow"
+                @bind-Value="@SelectedRegion"
+                Placeholder="Region"
+                FloatLabelType="FloatLabelType.Auto"
+                ShowClearButton="true">
+    <DropDownListFieldSettings Value="Name"></DropDownListFieldSettings>
+</SfDropDownList>
