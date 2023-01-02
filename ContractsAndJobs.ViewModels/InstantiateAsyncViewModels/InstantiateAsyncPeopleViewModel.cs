@@ -1,6 +1,5 @@
 ﻿using ContractsAndJobs.Data;
 using ContractsAndJobs.Models;
-using System.Collections.ObjectModel;
 
 namespace ContractsAndJobs.ViewModels.InstantiateAsyncViewModels
 {
@@ -21,7 +20,7 @@ namespace ContractsAndJobs.ViewModels.InstantiateAsyncViewModels
 
         public async Task InstantiateAsync()
         {
-            this.People ??= await this.contractsAndJobsDataService.GetAllContactsAsync();
+            People ??= await contractsAndJobsDataService.GetAllContactsAsync();
         }
 
         public IEnumerable<Contact>? People { get; set; }

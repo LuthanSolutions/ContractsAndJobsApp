@@ -32,7 +32,7 @@ namespace ContractsAndJobs.Components
                 var countriesToShow = SelectedRegion == null ?
                     Countries :
                     Countries?.Where(country => country.Id == SelectedRegion!.CountryId).ToList();
-                if(countriesToShow?.Count == 1)
+                if (countriesToShow?.Count == 1)
                 {
                     SelectedCountry = countriesToShow[0];
                 }

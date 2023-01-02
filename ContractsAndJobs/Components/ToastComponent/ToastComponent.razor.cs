@@ -21,10 +21,10 @@ namespace ContractsAndJobs.Components.ToastComponent
             {
                 InvokeAsync(() =>
                 {
-                    this.Options = options;
-                    this.IsToastVisible = true;
-                    this.StateHasChanged();
-                    this.Toast!.ShowAsync();
+                    Options = options;
+                    IsToastVisible = true;
+                    StateHasChanged();
+                    Toast!.ShowAsync();
                 });
             };
             base.OnInitialized();

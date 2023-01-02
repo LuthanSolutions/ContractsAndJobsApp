@@ -12,13 +12,13 @@
 
         private StaticViewModel(string message)
         {
-            this.Message = message;
+            Message = message;
         }
 
         private async Task Instantiate(string message)
         {
             await Task.Delay(5000);
-            this.Message += message;
+            Message += message;
         }
 
         public static Task<StaticViewModel> Create()

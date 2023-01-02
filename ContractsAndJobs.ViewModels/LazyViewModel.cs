@@ -24,7 +24,7 @@ namespace ContractsAndJobs.ViewModels
 
         private async Task<List<Contact>> GetAllContacts()
         {
-            return (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
+            return (await contractsAndJobsDataService.GetAllContactsAsync()).ToList();
         }
     }
 

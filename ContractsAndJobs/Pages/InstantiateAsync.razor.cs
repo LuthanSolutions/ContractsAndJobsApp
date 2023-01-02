@@ -10,7 +10,7 @@ namespace ContractsAndJobs.Pages
 
         protected async override Task OnParametersSetAsync()
         {
-            await this.ViewModel!.InstantiateAsync();
+            await ViewModel!.InstantiateAsync();
         }
     }
 }

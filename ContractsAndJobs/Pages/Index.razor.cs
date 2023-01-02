@@ -23,7 +23,7 @@ public partial class Index
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if(firstRender)
+        if (firstRender)
         {
             await contactSearch!.FocusAsync();
         }

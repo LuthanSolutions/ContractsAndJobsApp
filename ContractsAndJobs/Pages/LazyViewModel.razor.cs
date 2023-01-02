@@ -14,7 +14,7 @@ namespace ContractsAndJobs.Pages
 
         protected override async Task OnParametersSetAsync()
         {
-            this.Contacts = await this.ViewModel!.Contacts;
+            Contacts = await ViewModel!.Contacts;
         }
     }
 }

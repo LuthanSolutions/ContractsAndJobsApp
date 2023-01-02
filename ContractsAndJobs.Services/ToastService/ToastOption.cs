@@ -11,7 +11,7 @@
         public string? PositionY { get; private set; } = "Bottom";
 
         private ToastPositions? position = ToastPositions.BottomRight;
-        public ToastPositions? ToastPosition 
+        public ToastPositions? ToastPosition
         {
             get { return position; }
             set
