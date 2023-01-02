@@ -1,0 +1,29 @@
+﻿using ContractsAndJobs.Data;
+using ContractsAndJobs.Models;
+using System.Collections.ObjectModel;
+
+namespace ContractsAndJobs.ViewModels.InstantiateAsyncViewModels
+{
+
+    public interface IInstantiateAsyncPeopleViewModel : IInstantiateAsyncViewModel
+    {
+        IEnumerable<Contact>? People { get; set; }
+    }
+
+    public class InstantiateAsyncPeopleViewModel : IInstantiateAsyncPeopleViewModel
+    {
+        private readonly IContractsAndJobsDataService contractsAndJobsDataService;
+
+        public InstantiateAsyncPeopleViewModel(IContractsAndJobsDataService contractsAndJobsDataService)
+        {
+            this.contractsAndJobsDataService = contractsAndJobsDataService;
+        }
+
+        public async Task InstantiateAsync()
+        {
+            this.People ??= await this.contractsAndJobsDataService.GetAllContactsAsync();
+        }
+
+        public IEnumerable<Contact>? People { get; set; }
+    }
+}

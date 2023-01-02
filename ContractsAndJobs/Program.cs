@@ -2,6 +2,7 @@
 using ContractsAndJobs.Services;
 using ContractsAndJobs.Services.ToastService;
 using ContractsAndJobs.ViewModels;
+using ContractsAndJobs.ViewModels.InstantiateAsyncViewModels;
 using DataServices.Services;
 using Syncfusion.Blazor;
 using Syncfusion.Blazor.Popups;
@@ -25,6 +26,8 @@ builder.Services.AddScoped<SfDialogService>();
 
 builder.Services.AddScoped<IStaticViewModel, StaticViewModel>(sp => StaticViewModel.Create().Result);
 builder.Services.AddScoped<ILazyViewModel, LazyViewModel>();
+
+builder.Services.AddTransient<IInstantiateAsyncPeopleViewModel, InstantiateAsyncPeopleViewModel>();
 
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzQ1NDU1QDMyMzAyZTMzMmUzMGg5a3EvQXB3SG1ZY2dMenJDRy9wVmYwbW5aVGdBU0RONnNkSFl2UTIyNDA9");
 
