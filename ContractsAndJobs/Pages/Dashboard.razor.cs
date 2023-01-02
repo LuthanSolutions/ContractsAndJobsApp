@@ -1,6 +1,7 @@
 ﻿using ContractsAndJobs.Services;
 using ContractsAndJobs.Services.ToastService;
 using Microsoft.AspNetCore.Components;
+using System.Diagnostics;
 
 namespace ContractsAndJobs.Pages
 {
@@ -42,36 +43,30 @@ namespace ContractsAndJobs.Pages
         private static List<Task> Tasks = new ();
         private void OnButtonClicked()
         {
-            Tasks.Add(Task.Run(() => DoSomethingAsync(1, 2)));
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            Tasks.Add(Task.Run(() => DoSomethingAsync(1, 5)));
             Tasks.Add(Task.Run(() => DoSomethingAsync(2, 1)));
-            Tasks.Add(Task.Run(() => DoSomethingAsync(3, 2)));
-            Tasks.Add(Task.Run(() => DoSomethingAsync(4, 2)));
+            Tasks.Add(Task.Run(() => DoSomethingAsync(3, 1)));
+            Tasks.Add(Task.Run(() => DoSomethingAsync(4, 1)));
             Tasks.Add(Task.Run(() => DoSomethingAsync(5, 1)));
             Task.WaitAll(Tasks.ToArray());
 
+            stopwatch.Stop();
+
             this.ToastService!.ShowToast(new ToastOption()
             {
-                Title = "Toast Title",
-                Content = "Toast content",
+                Title = "Tasks Finished",
+                Content = $"Tasks finished in {stopwatch.Elapsed.TotalSeconds} seconds.",
                 ToastPosition = ToastPositions.BottomRight
             });
         }
 
         private async Task DoSomethingAsync(int runNumber, int secondsToWait)
         {
-            this.ToastService!.ShowToast(new ToastOption()
-            {
-                Title = $"Task Starting: {runNumber}",
-                Content = $"Task duration: {secondsToWait} seconds",
-                ToastPosition = ToastPositions.BottomRight
-            });
             await Task.Delay(1000 * secondsToWait);
-            this.ToastService!.ShowToast(new ToastOption()
-            {
-                Title = $"Task Finished: {runNumber}",
-                Content = $"Task duration: {secondsToWait} seconds",
-                ToastPosition = ToastPositions.BottomRight
-            });        }
+        }
 
     }
 }
