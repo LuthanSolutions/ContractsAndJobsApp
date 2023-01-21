@@ -8,7 +8,7 @@ namespace ContractsAndJobs.Pages
         [Inject]
         public IInstantiateAsyncPeopleViewModel? ViewModel { get; set; }
 
-        protected async override Task OnParametersSetAsync()
+        protected async override Task OnInitializedAsync()
         {
             await ViewModel!.InstantiateAsync();
         }

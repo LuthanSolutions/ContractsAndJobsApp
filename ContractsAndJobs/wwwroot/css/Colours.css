@@ -1,4 +1,6 @@
 ﻿:root {
     --card-header-background-colour: #dddddd;
     --card-border-colour: #cccccc;
+    --card-top-gradient-colour: #ffffff;
+    --card-bottom-gradient-colour: #eeeeee;
 }

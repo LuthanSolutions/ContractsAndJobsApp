@@ -3,6 +3,7 @@
     border-color: var(--card-border-colour);
     min-width: 20rem;
     height: 100%;
+    background-image: linear-gradient(to bottom right, var(--card-top-gradient-colour), var(--card-bottom-gradient-colour));
 }
 
     .e-card .e-card-header {

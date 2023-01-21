@@ -1,19 +1,20 @@
-﻿using ContractsAndJobs.Models;
-using Microsoft.AspNetCore.Components;
-
-namespace ContractsAndJobs.Components
+﻿namespace ContractsAndJobs.Components
 {
+
+    using ContractsAndJobs.Models;
+    using Microsoft.AspNetCore.Components;
+
     public partial class CountriesAndRegions
     {
-        private Country? SelectedCountry { get; set; }
-
-        private Region? SelectedRegion { get; set; }
-
         [Parameter]
         public List<Country>? Countries { get; set; }
 
         [Parameter]
         public List<Region>? Regions { get; set; }
+
+        private Country? SelectedCountry { get; set; }
+
+        private Region? SelectedRegion { get; set; }
 
         private List<Region>? RegionsToShow
         {
