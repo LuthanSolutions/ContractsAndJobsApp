@@ -1,5 +1,8 @@
 ﻿@page "/controltests"
 @using ContractsAndJobs.Components
+@using ContractsAndJobs.Services;
+
+@inject IDialogService DialogService
 
 <div class="container">
     <div class="row g-2">
@@ -8,8 +11,8 @@
                 <CardHeader Title="People"></CardHeader>
                 <CardContent>
                     Select first and second person
-                    <SfDropDownList TItem="string" TValue="string" DataSource="@dropdownItems" Placeholder="First person" FloatLabelType="FloatLabelType.Auto" ShowClearButton="true"/>
-                    <SfDropDownList TItem="string" TValue="string" DataSource="@dropdownItems" Placeholder="Second person" FloatLabelType="FloatLabelType.Auto" ShowClearButton="true"/>
+                    <SfDropDownList TItem="string" TValue="string" DataSource="@dropdownItems" Placeholder="First person" FloatLabelType="FloatLabelType.Auto" ShowClearButton="true" />
+                    <SfDropDownList TItem="string" TValue="string" DataSource="@dropdownItems" Placeholder="Second person" FloatLabelType="FloatLabelType.Auto" ShowClearButton="true" />
                 </CardContent>
             </SfCard>
         </div>
@@ -20,7 +23,7 @@
                     <div class="pb-3">
                         Select Date
                     </div>
-                    <SfCalendar TValue="DateTime"/>
+                    <SfCalendar TValue="DateTime" />
                 </CardContent>
             </SfCard>
         </div>
@@ -36,9 +39,34 @@
     <div class="row g-2">
         <div class="col p-2">
             <SfCard>
-                <CardHeader Title="Title Text"></CardHeader>
+                <CardHeader Title="Dialogs"></CardHeader>
                 <CardContent>
-                    Content Text
+                    <div class="container">
+                        <div class="row">
+                            <div class="col p-2">
+                                <SfButton @onclick="@OnAlertClick">Alert</SfButton>
+                            </div>
+                            <div class="col p-2">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-2">
+                                <SfButton @onclick="@OnConfirmClick">Confirm</SfButton>
+                            </div>
+                            <div class="col p-2">
+                                <p>Confirm result: @confirmResult</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col p-2">
+                                <SfButton @onclick="@OnPromptClick">Prompt</SfButton>
+                            </div>
+                            <div class="col p-2">
+                                <p>Prompt result: @promptResult</p>
+                            </div>
+                        </div>
+                    </div>   
                 </CardContent>
             </SfCard>
         </div>
@@ -53,8 +81,26 @@
     </div>
 </div>
 
-@code{
-    private List<string> dropdownItems = new(){"Glen Wilkin", "Jana Statute", "Michael Mouse", "Minnie Mouse"};
+@code {
+    private bool? confirmResult;
+    private string? promptResult;
+
+    private async Task OnAlertClick()
+    {
+        await DialogService.AlertAsync("Title", "This is an alert", "Thanks");
+    }
+
+    private async Task OnConfirmClick()
+    {
+        confirmResult = await DialogService.ConfirmAsync("Title", "Are you sure that you want to do this?", "Yes");
+    }
+
+    private async Task OnPromptClick()
+    {
+        promptResult = await DialogService.PromptAsync("Title", "Enter some text", "Here it is");
+    }
+
+    private List<string> dropdownItems = new() { "Glen Wilkin", "Jana Statute", "Michael Mouse", "Minnie Mouse" };
 
     private List<Country> Countries = new()
     {

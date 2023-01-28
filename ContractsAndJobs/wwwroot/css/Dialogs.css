@@ -1,0 +1,8 @@
+﻿.ModalDialog .e-dialog .e-dlg-header-content {
+    background-color: var(--card-header-background-colour);
+}
+
+.ModalDialog .e-dialog .e-dlg-content {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+}

@@ -29,6 +29,8 @@ builder.Services.AddScoped<ILazyViewModel, LazyViewModel>();
 
 builder.Services.AddTransient<IInstantiateAsyncPeopleViewModel, InstantiateAsyncPeopleViewModel>();
 
+builder.Services.AddScoped<IDialogService, DialogService>();
+
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzQ1NDU1QDMyMzAyZTMzMmUzMGg5a3EvQXB3SG1ZY2dMenJDRy9wVmYwbW5aVGdBU0RONnNkSFl2UTIyNDA9");
 
 var app = builder.Build();
