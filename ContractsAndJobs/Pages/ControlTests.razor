@@ -55,7 +55,7 @@
                                 <SfButton @onclick="@OnConfirmClick">Confirm</SfButton>
                             </div>
                             <div class="col p-2">
-                                <p>Confirm result: @confirmResult</p>
+                                @confirmResult
                             </div>
                         </div>
                         <div class="row">
@@ -63,7 +63,7 @@
                                 <SfButton @onclick="@OnPromptClick">Prompt</SfButton>
                             </div>
                             <div class="col p-2">
-                                <p>Prompt result: @promptResult</p>
+                                @promptResult
                             </div>
                         </div>
                     </div>   
@@ -87,17 +87,17 @@
 
     private async Task OnAlertClick()
     {
-        await DialogService.AlertAsync("Title", "This is an alert", "Thanks");
+        await DialogService.AlertAsync("Title", "This is an alert, it doesn't return anything.", "Thanks");
     }
 
     private async Task OnConfirmClick()
     {
-        confirmResult = await DialogService.ConfirmAsync("Title", "Are you sure that you want to do this?", "Yes");
+        confirmResult = await DialogService.ConfirmAsync("Title", "Are you sure that you want to do this?", "Yes", "No");
     }
 
     private async Task OnPromptClick()
     {
-        promptResult = await DialogService.PromptAsync("Title", "Enter some text", "Here it is");
+        promptResult = await DialogService.PromptAsync("Title", "Enter some text", "Here it is", "No thanks");
     }
 
     private List<string> dropdownItems = new() { "Glen Wilkin", "Jana Statute", "Michael Mouse", "Minnie Mouse" };
