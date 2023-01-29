@@ -43,27 +43,27 @@
                 <CardContent>
                     <div class="container">
                         <div class="row">
-                            <div class="col p-2">
+                            <div class="col-2 p-2">
                                 <SfButton @onclick="@OnAlertClick">Alert</SfButton>
                             </div>
-                            <div class="col p-2">
-
+                            <div class="col-10 p-2">
+                                <SfMessage Severity="MessageSeverity.Warning" Variant="MessageVariant.Text">Click to display an alert dialog</SfMessage>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col p-2">
+                            <div class="col-2 p-2">
                                 <SfButton @onclick="@OnConfirmClick">Confirm</SfButton>
                             </div>
-                            <div class="col p-2">
-                                @confirmResult
+                            <div class="col-10 p-2">
+                                <SfMessage Severity="MessageSeverity.Normal" Variant="MessageVariant.Outlined">Click to display a confirmation dialog</SfMessage>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col p-2">
+                            <div class="col-2 p-2">
                                 <SfButton @onclick="@OnPromptClick">Prompt</SfButton>
                             </div>
-                            <div class="col p-2">
-                                @promptResult
+                            <div class="col-10 p-2">
+                                <SfMessage Severity="MessageSeverity.Success" Variant="MessageVariant.Filled">Click to display a prompt dialog</SfMessage>
                             </div>
                         </div>
                     </div>   
