@@ -21,11 +21,11 @@
             Message += message;
         }
 
-        public static Task<StaticViewModel> Create()
+        public static async Task<StaticViewModel> Create()
         {
             var instance = new StaticViewModel("Created with constructor");
             var _ = instance.Instantiate(" Added from Instantiate");
-            return Task.FromResult(instance);
+            return instance;
         }
     }
 }
