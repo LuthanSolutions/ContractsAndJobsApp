@@ -1,18 +1,17 @@
-﻿namespace ContractsAndJobs.Services.ToastService
+﻿namespace ContractsAndJobs.Services.ToastService;
+
+public interface IToastService
 {
-    public interface IToastService
-    {
-        event Action<ToastOption>? ShowToastTrigger;
+    event Action<ToastOption>? ShowToastTrigger;
 
-        void ShowToast(ToastOption options);
-    }
+    void ShowToast(ToastOption options);
+}
 
-    public class ToastService : IToastService
+public class ToastService : IToastService
+{
+    public event Action<ToastOption>? ShowToastTrigger;
+    public void ShowToast(ToastOption options)
     {
-        public event Action<ToastOption>? ShowToastTrigger;
-        public void ShowToast(ToastOption options)
-        {
-            ShowToastTrigger!.Invoke(options);
-        }
+        ShowToastTrigger!.Invoke(options);
     }
 }

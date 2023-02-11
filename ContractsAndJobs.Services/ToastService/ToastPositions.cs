@@ -1,12 +1,11 @@
-﻿namespace ContractsAndJobs.Services.ToastService
+﻿namespace ContractsAndJobs.Services.ToastService;
+
+public enum ToastPositions
 {
-    public enum ToastPositions
-    {
-        TopLeft,
-        TopMiddle,
-        TopRight,
-        BottomLeft,
-        BottomRight,
-        BottomMiddle
-    }
+    TopLeft,
+    TopMiddle,
+    TopRight,
+    BottomLeft,
+    BottomRight,
+    BottomMiddle
 }

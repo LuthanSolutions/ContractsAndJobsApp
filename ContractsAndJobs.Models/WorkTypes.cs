@@ -1,10 +1,9 @@
-﻿namespace ContractsAndJobs.Models
+﻿namespace ContractsAndJobs.Models;
+
+public enum WorkTypes
 {
-    public enum WorkTypes
-    {
-        NotSet,
-        WFH,
-        InOffice,
-        Hybrid
-    }
+    NotSet,
+    WFH,
+    InOffice,
+    Hybrid
 }

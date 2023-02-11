@@ -1,9 +1,8 @@
-﻿namespace ContractsAndJobs.Models
+﻿namespace ContractsAndJobs.Models;
+
+public enum RoleTypes
 {
-    public enum RoleTypes
-    {
-        NotSet,
-        Permanent,
-        Contract
-    }
+    NotSet,
+    Permanent,
+    Contract
 }

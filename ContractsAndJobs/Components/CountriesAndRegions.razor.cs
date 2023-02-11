@@ -1,45 +1,44 @@
-﻿namespace ContractsAndJobs.Components
+﻿namespace ContractsAndJobs.Components;
+
+
+using ContractsAndJobs.Models;
+using Microsoft.AspNetCore.Components;
+
+public partial class CountriesAndRegions
 {
+    [Parameter]
+    public List<Country>? Countries { get; set; }
 
-    using ContractsAndJobs.Models;
-    using Microsoft.AspNetCore.Components;
+    [Parameter]
+    public List<Region>? Regions { get; set; }
 
-    public partial class CountriesAndRegions
+    private Country? SelectedCountry { get; set; }
+
+    private Region? SelectedRegion { get; set; }
+
+    private List<Region>? RegionsToShow
     {
-        [Parameter]
-        public List<Country>? Countries { get; set; }
-
-        [Parameter]
-        public List<Region>? Regions { get; set; }
-
-        private Country? SelectedCountry { get; set; }
-
-        private Region? SelectedRegion { get; set; }
-
-        private List<Region>? RegionsToShow
+        get
         {
-            get
-            {
-                return SelectedCountry == null ?
-                    Regions :
-                    Regions?.Where(region => region.CountryId == SelectedCountry!.Id).ToList();
-            }
+            return SelectedCountry == null ?
+                Regions :
+                Regions?.Where(region => region.CountryId == SelectedCountry!.Id).ToList();
         }
-
-        private List<Country>? CountriesToShow
-        {
-            get
-            {
-                var countriesToShow = SelectedRegion == null ?
-                    Countries :
-                    Countries?.Where(country => country.Id == SelectedRegion!.CountryId).ToList();
-                if (countriesToShow?.Count == 1)
-                {
-                    SelectedCountry = countriesToShow[0];
-                }
-                return countriesToShow;
-            }
-        }
-
     }
+
+    private List<Country>? CountriesToShow
+    {
+        get
+        {
+            var countriesToShow = SelectedRegion == null ?
+                Countries :
+                Countries?.Where(country => country.Id == SelectedRegion!.CountryId).ToList();
+            if (countriesToShow?.Count == 1)
+            {
+                SelectedCountry = countriesToShow[0];
+            }
+            return countriesToShow;
+        }
+    }
+
 }

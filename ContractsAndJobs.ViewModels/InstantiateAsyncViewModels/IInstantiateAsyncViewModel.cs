@@ -1,7 +1,6 @@
-﻿namespace ContractsAndJobs.ViewModels.InstantiateAsyncViewModels
+﻿namespace ContractsAndJobs.ViewModels.InstantiateAsyncViewModels;
+
+public interface IInstantiateAsyncViewModel
 {
-    public interface IInstantiateAsyncViewModel
-    {
-        Task InstantiateAsync();
-    }
+    Task InstantiateAsync();
 }
