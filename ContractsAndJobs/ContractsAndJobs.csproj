@@ -8,24 +8,25 @@
 
 	<ItemGroup>
 		<PackageReference Include="EntityFramework" Version="6.4.4" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.0">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Cards" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Charts" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Grid" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Layouts" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Maps" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Sparkline" Version="20.3.0.60" />
-		<PackageReference Include="Syncfusion.Blazor.Themes" Version="20.3.0.60" />
+		<PackageReference Include="Syncfusion.Blazor.Buttons" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Cards" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Charts" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.DropDowns" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Grid" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Layouts" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Maps" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Notifications" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Sparkline" Version="20.4.0.50" />
+		<PackageReference Include="Syncfusion.Blazor.Themes" Version="20.4.0.50" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\ContractsAndJobs.RepositroyServices\ContractsAndJobs.RepositroyServices.csproj" />
 		<ProjectReference Include="..\ContractsAndJobs.Services\ContractsAndJobs.Services.csproj" />
 		<ProjectReference Include="..\ContractsAndJobs.ViewModels\ContractsAndJobs.ViewModels.csproj" />
 		<ProjectReference Include="..\DataServices\DataServices.csproj" />

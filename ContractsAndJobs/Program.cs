@@ -1,4 +1,5 @@
 ﻿using ContractsAndJobs.Data;
+using ContractsAndJobs.RepositroyServices;
 using ContractsAndJobs.Services;
 using ContractsAndJobs.Services.ToastService;
 using ContractsAndJobs.ViewModels;
@@ -21,6 +22,9 @@ builder.Services.AddTransient<IAddContactViewModel, AddContactViewModel>();
 builder.Services.AddTransient<IBrowserService, BrowserService>();
 builder.Services.AddScoped<IToastService, ToastService>();
 builder.Services.AddTransient<IDataService, DataService>();
+builder.Services.AddScoped<ICountriesViewModel, CountriesViewModel>();
+builder.Services.AddScoped<ICountriesService, CountriesService>();
+builder.Services.AddScoped<ICountriesRepositoryService, CountriesRepositoryService>();
 
 builder.Services.AddScoped<SfDialogService>();
 
@@ -31,7 +35,7 @@ builder.Services.AddTransient<IInstantiateAsyncPeopleViewModel, InstantiateAsync
 
 builder.Services.AddScoped<IDialogService, DialogService>();
 
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzQ1NDU1QDMyMzAyZTMzMmUzMGg5a3EvQXB3SG1ZY2dMenJDRy9wVmYwbW5aVGdBU0RONnNkSFl2UTIyNDA9");
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTE1MDI5MkAzMjMwMmUzNDJlMzBuWCtNeDVSMnBZVjJwVVdBY01qUnl2VEpSTGo5eDhjdTh5SUprNGxJRmtFPQ==");
 
 var app = builder.Build();
 

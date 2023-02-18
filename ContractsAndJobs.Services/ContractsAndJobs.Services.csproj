@@ -10,4 +10,9 @@
     <PackageReference Include="Microsoft.JSInterop" Version="6.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ContractsAndJobs.Models\ContractsAndJobs.Models.csproj" />
+    <ProjectReference Include="..\ContractsAndJobs.RepositroyServices\ContractsAndJobs.RepositroyServices.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,36 @@
+﻿@page "/countries"
+
+<div class="container">
+    <div class="row g-2">
+        <div class="col p-2">
+            <SfCard>
+                <CardHeader Title="Countries" />
+                <CardContent>
+                    <SfAutoComplete 
+                        TItem="Country" 
+                        TValue="Country" 
+                        DataSource="@ViewModel?.Countries" 
+                        Placeholder="Select a country" 
+                        Highlight="true" 
+                        FloatLabelType="FloatLabelType.Always"
+                        @bind-Value="@ViewModel!.SelectedCountry">
+                        <AutoCompleteTemplates TItem="Country">
+                            <NoRecordsTemplate>
+                                <span class='norecord'>No countries found</span>
+                            </NoRecordsTemplate>
+                        </AutoCompleteTemplates>
+                        <AutoCompleteFieldSettings Value="Name" />
+                    </SfAutoComplete>
+                </CardContent>
+            </SfCard>
+        </div>
+        <div class="col p-2">
+            <SfCard>
+                <CardHeader Title="Selected Country" />
+                <CardContent>
+                    <SfTextBox Value="@ViewModel?.SelectedCountry?.Name" Placeholder="Country" FloatLabelType="FloatLabelType.Always"></SfTextBox>
+                </CardContent>
+            </SfCard>
+        </div>
+    </div>
+</div>
