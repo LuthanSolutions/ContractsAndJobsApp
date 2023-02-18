@@ -12,7 +12,6 @@
                         DataSource="@ViewModel?.Countries" 
                         Placeholder="Select a country" 
                         Highlight="true" 
-                        FloatLabelType="FloatLabelType.Always"
                         @bind-Value="@ViewModel!.SelectedCountry">
                         <AutoCompleteTemplates TItem="Country">
                             <NoRecordsTemplate>
@@ -21,6 +20,17 @@
                         </AutoCompleteTemplates>
                         <AutoCompleteFieldSettings Value="Name" />
                     </SfAutoComplete>
+                    <SfMaps>
+                        @if (ViewModel?.SelectedCountry != null)
+                        {
+                            <MapsCenterPosition Latitude="@((double)ViewModel.SelectedCountry.Latitude)" Longitude="@((double)ViewModel.SelectedCountry.Longitude)" />
+                        }
+                        <MapsZoomSettings Enable="true" EnablePanning="true" MaxZoom="20" ZoomFactor="5"></MapsZoomSettings>
+                        <MapsLayers>
+                            <MapsLayer UrlTemplate="https://tile.openstreetmap.org/level/tileX/tileY.png" TValue="string">
+                            </MapsLayer>
+                        </MapsLayers>
+                    </SfMaps>
                 </CardContent>
             </SfCard>
         </div>
@@ -28,7 +38,7 @@
             <SfCard>
                 <CardHeader Title="Selected Country" />
                 <CardContent>
-                    <SfTextBox Value="@ViewModel?.SelectedCountry?.Name" Placeholder="Country" FloatLabelType="FloatLabelType.Always"></SfTextBox>
+                    <SfTextBox Value="@ViewModel?.SelectedCountry?.Name" Placeholder="Country"></SfTextBox>
                 </CardContent>
             </SfCard>
         </div>
