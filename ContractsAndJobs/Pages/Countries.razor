@@ -6,13 +6,12 @@
             <SfCard>
                 <CardHeader Title="Countries" />
                 <CardContent>
-                    <SfAutoComplete 
-                        TItem="Country" 
-                        TValue="Country" 
-                        DataSource="@ViewModel?.Countries" 
-                        Placeholder="Select a country" 
-                        Highlight="true" 
-                        @bind-Value="@ViewModel!.SelectedCountry">
+                    <SfAutoComplete TItem="Country"
+                                    TValue="Country"
+                                    DataSource="@ViewModel?.Countries"
+                                    Placeholder="Select a country"
+                                    Highlight="true"
+                                    @bind-Value="@ViewModel!.SelectedCountry">
                         <AutoCompleteTemplates TItem="Country">
                             <NoRecordsTemplate>
                                 <span class='norecord'>No countries found</span>
@@ -36,9 +35,14 @@
         </div>
         <div class="col p-2">
             <SfCard>
-                <CardHeader Title="Selected Country" />
+                <CardHeader Title="Selected Country's Flag'" />
                 <CardContent>
-                    <SfTextBox Value="@ViewModel?.SelectedCountry?.Name" Placeholder="Country"></SfTextBox>
+                    @if (ViewModel?.SelectedCountry != null)
+                    {
+                        <div class="flag-div">
+                            <img src="@ViewModel.SelectedCountry.FlagSvg" />
+                        </div>
+                    }
                 </CardContent>
             </SfCard>
         </div>
