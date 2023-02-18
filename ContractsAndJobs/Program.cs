@@ -1,13 +1,4 @@
-﻿using ContractsAndJobs.Data;
-using ContractsAndJobs.RepositroyServices;
-using ContractsAndJobs.ServiceRegistrations;
-using ContractsAndJobs.Services;
-using ContractsAndJobs.Services.ToastService;
-using ContractsAndJobs.ViewModels;
-using ContractsAndJobs.ViewModels.InstantiateAsyncViewModels;
-using DataServices.Services;
-using Syncfusion.Blazor;
-using Syncfusion.Blazor.Popups;
+﻿using ContractsAndJobs.ServiceRegistrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
