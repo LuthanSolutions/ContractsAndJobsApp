@@ -1,5 +1,6 @@
 ﻿using ContractsAndJobs.Data;
 using ContractsAndJobs.RepositroyServices;
+using ContractsAndJobs.ServiceRegistrations;
 using ContractsAndJobs.Services;
 using ContractsAndJobs.Services.ToastService;
 using ContractsAndJobs.ViewModels;
@@ -11,29 +12,7 @@ using Syncfusion.Blazor.Popups;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSyncfusionBlazor();
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
-
-builder.Services.AddTransient<IIndexViewModel, IndexViewModel>();
-builder.Services.AddTransient<IContractsAndJobsDataService, ContractsAndJobsDataService>();
-builder.Services.AddTransient<IAddContactViewModel, AddContactViewModel>();
-builder.Services.AddTransient<IBrowserService, BrowserService>();
-builder.Services.AddScoped<IToastService, ToastService>();
-builder.Services.AddTransient<IDataService, DataService>();
-builder.Services.AddScoped<ICountriesViewModel, CountriesViewModel>();
-builder.Services.AddScoped<ICountriesService, CountriesService>();
-builder.Services.AddScoped<ICountriesRepositoryService, CountriesRepositoryService>();
-
-builder.Services.AddScoped<SfDialogService>();
-
-builder.Services.AddScoped<IStaticViewModel, StaticViewModel>(sp => StaticViewModel.Create().Result);
-builder.Services.AddScoped<ILazyViewModel, LazyViewModel>();
-
-builder.Services.AddTransient<IInstantiateAsyncPeopleViewModel, InstantiateAsyncPeopleViewModel>();
-
-builder.Services.AddScoped<IDialogService, DialogService>();
+ServiceRegistrations.RegisterServices(builder.Services);
 
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTE1MDI5MkAzMjMwMmUzNDJlMzBuWCtNeDVSMnBZVjJwVVdBY01qUnl2VEpSTGo5eDhjdTh5SUprNGxJRmtFPQ==");
 

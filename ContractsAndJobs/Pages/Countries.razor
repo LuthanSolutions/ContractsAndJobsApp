@@ -19,7 +19,7 @@
                         </AutoCompleteTemplates>
                         <AutoCompleteFieldSettings Value="Name" />
                     </SfAutoComplete>
-                    <SfMaps>
+                    <SfMaps Width="100%">
                         @if (ViewModel?.SelectedCountry != null)
                         {
                             <MapsCenterPosition Latitude="@((double)ViewModel.SelectedCountry.Latitude)" Longitude="@((double)ViewModel.SelectedCountry.Longitude)" />
