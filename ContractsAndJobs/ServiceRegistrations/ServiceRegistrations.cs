@@ -1,12 +1,12 @@
 ﻿using ContractsAndJobs.Data;
 using ContractsAndJobs.RepositroyServices;
-using ContractsAndJobs.Services.ToastService;
 using ContractsAndJobs.Services;
-using ContractsAndJobs.ViewModels.InstantiateAsyncViewModels;
+using ContractsAndJobs.Services.ToastService;
 using ContractsAndJobs.ViewModels;
+using ContractsAndJobs.ViewModels.InstantiateAsyncViewModels;
 using DataServices.Services;
-using Syncfusion.Blazor.Popups;
 using Syncfusion.Blazor;
+using Syncfusion.Blazor.Popups;
 
 namespace ContractsAndJobs.ServiceRegistrations;
 
