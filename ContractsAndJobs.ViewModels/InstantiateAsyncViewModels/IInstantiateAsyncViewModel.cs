@@ -1,4 +1,4 @@
-﻿namespace ContractsAndJobs.ViewModels.InstantiateAsyncViewModels;
+﻿namespace ContractsAndJobs.ViewModels;
 
 public interface IInstantiateAsyncViewModel
 {

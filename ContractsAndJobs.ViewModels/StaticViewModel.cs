@@ -23,6 +23,7 @@ public class StaticViewModel : IStaticViewModel
 
     public static async Task<StaticViewModel> Create()
     {
+        await Task.Delay(1);
         var instance = new StaticViewModel("Created with constructor");
         var _ = instance.Instantiate(" Added from Instantiate");
         return instance;
