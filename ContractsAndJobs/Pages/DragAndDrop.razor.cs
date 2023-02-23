@@ -14,8 +14,8 @@ public partial class DragAndDrop
     {
         if (firstRender)
         {
-            await JSRuntime!.InvokeVoidAsync("import", "./js/dragdrop.js");
-            await JSRuntime!.InvokeVoidAsync("signalDragEnd", DotNetObjectReference.Create(this));
+            await this.JSRuntime!.InvokeVoidAsync("import", "./js/dragdrop.js");
+            await this.JSRuntime!.InvokeVoidAsync("signalDragEnd", DotNetObjectReference.Create(this));
         }
         await base.OnAfterRenderAsync(firstRender);
     }
@@ -26,13 +26,13 @@ public partial class DragAndDrop
     [JSInvokable("DragStarted")]
     public async Task DragStarted(string target)
     {
-        startId = target;
+        this.startId = target;
     }
 
     [JSInvokable("ItemDropped")]
     public async Task ItemDropped(string target)
     {
-        stopId = target;
+        this.stopId = target;
     }
 
     private void OnButtonClicked(string message)

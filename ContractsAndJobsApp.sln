@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataServices", "DataService
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsAndJobs.UnitTests", "ContractsAndJobs.UnitTests\ContractsAndJobs.UnitTests.csproj", "{E57823A6-9029-4AD9-8517-710F8B9144A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractsAndJobs.RepositroyServices", "ContractsAndJobs.RepositroyServices\ContractsAndJobs.RepositroyServices.csproj", "{6C8D6F9B-CE82-4BAB-84E9-CD8FE5B8D1AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractsAndJobs.RepositroyServices", "ContractsAndJobs.RepositroyServices\ContractsAndJobs.RepositroyServices.csproj", "{6C8D6F9B-CE82-4BAB-84E9-CD8FE5B8D1AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractsAndJobs.ApiServices", "ContractsAndJobs.ApiServices\ContractsAndJobs.ApiServices.csproj", "{B0B90644-2058-4F06-86AE-C68571A1887E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{6C8D6F9B-CE82-4BAB-84E9-CD8FE5B8D1AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C8D6F9B-CE82-4BAB-84E9-CD8FE5B8D1AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C8D6F9B-CE82-4BAB-84E9-CD8FE5B8D1AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0B90644-2058-4F06-86AE-C68571A1887E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0B90644-2058-4F06-86AE-C68571A1887E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0B90644-2058-4F06-86AE-C68571A1887E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0B90644-2058-4F06-86AE-C68571A1887E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

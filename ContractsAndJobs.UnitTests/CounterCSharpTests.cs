@@ -10,7 +10,7 @@ public class CounterCSharpTests : TestContext
     public void CounterStartsAtZero()
     {
         // Arrange
-        var cut = RenderComponent<Counter>();
+        var cut = this.RenderComponent<Counter>();
 
         // Assert that content of the paragraph shows counter at zero
         cut.Find("p").MarkupMatches("<p>Current count: 0</p>");
@@ -20,7 +20,7 @@ public class CounterCSharpTests : TestContext
     public void ClickingButtonIncrementsCounter()
     {
         // Arrange
-        var cut = RenderComponent<Counter>();
+        var cut = this.RenderComponent<Counter>();
 
         // Act - click button to increment counter
         cut.Find("button").Click();

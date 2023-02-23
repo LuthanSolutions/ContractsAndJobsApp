@@ -33,11 +33,11 @@ public class CountriesAndRegionsTests
     [Fact]
     public void ComponentRenderCorrectly()
     {
-        using var ctx = GetTestContext();
+        using var ctx = this.GetTestContext();
 
         var component = ctx.RenderComponent<CountriesAndRegions>(parameters => parameters
-            .Add(param => param.Countries, countries)
-            .Add(param => param.Regions, regions)
+            .Add(param => param.Countries, this.countries)
+            .Add(param => param.Regions, this.regions)
         );
 
         Assert.NotNull(component);
@@ -46,15 +46,15 @@ public class CountriesAndRegionsTests
     [Fact]
     public void ComponentParametersAreSetCorrectly()
     {
-        using var ctx = GetTestContext();
+        using var ctx = this.GetTestContext();
 
         var instance = ctx.RenderComponent<CountriesAndRegions>(parameters => parameters
-            .Add(param => param.Countries, countries)
-            .Add(param => param.Regions, regions)
+            .Add(param => param.Countries, this.countries)
+            .Add(param => param.Regions, this.regions)
         ).Instance;
 
-        Assert.Equivalent(countries, instance.Countries);
-        Assert.Equivalent(regions, instance.Regions);
+        Assert.Equivalent(this.countries, instance.Countries);
+        Assert.Equivalent(this.regions, instance.Regions);
 
     }
 

@@ -20,9 +20,9 @@ public partial class CountriesAndRegions
     {
         get
         {
-            return SelectedCountry == null ?
-                Regions :
-                Regions?.Where(region => region.CountryId == SelectedCountry!.Id).ToList();
+            return this.SelectedCountry == null ?
+                this.Regions :
+                this.Regions?.Where(region => region.CountryId == this.SelectedCountry!.Id).ToList();
         }
     }
 
@@ -30,12 +30,12 @@ public partial class CountriesAndRegions
     {
         get
         {
-            var countriesToShow = SelectedRegion == null ?
-                Countries :
-                Countries?.Where(country => country.Id == SelectedRegion!.CountryId).ToList();
+            var countriesToShow = this.SelectedRegion == null ?
+                this.Countries :
+                this.Countries?.Where(country => country.Id == this.SelectedRegion!.CountryId).ToList();
             if (countriesToShow?.Count == 1)
             {
-                SelectedCountry = countriesToShow[0];
+                this.SelectedCountry = countriesToShow[0];
             }
             return countriesToShow;
         }

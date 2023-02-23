@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 ServiceRegistrations.RegisterServices(builder.Services);
+HttpClientRegistrations.RegisterHttpClientServices(builder.Services);
 
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTE1MDI5MkAzMjMwMmUzNDJlMzBuWCtNeDVSMnBZVjJwVVdBY01qUnl2VEpSTGo5eDhjdTh5SUprNGxJRmtFPQ==");
 

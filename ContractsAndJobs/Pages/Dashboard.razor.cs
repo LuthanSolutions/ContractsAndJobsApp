@@ -41,7 +41,7 @@ public partial class Dashboard
 
     private void OnButtonClicked()
     {
-        ToastService!.ShowToast(new ToastOption()
+        this.ToastService!.ShowToast(new ToastOption()
         {
             Title = "Toast Title",
             Content = $"This is the content text of the toast",

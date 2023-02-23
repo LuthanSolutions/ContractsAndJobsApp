@@ -23,6 +23,6 @@ public class CountriesViewModel : ICountriesViewModel
 
     public async Task InstantiateAsync()
     {
-        Countries = await countriesService.GetCountriesAsync();
+        this.Countries = await this.countriesService.GetCountriesAsync();
     }
 }

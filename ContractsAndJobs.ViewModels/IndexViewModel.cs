@@ -23,12 +23,12 @@ public class IndexViewModel : IIndexViewModel
 
     public async Task InitialiseViewModelAsync()
     {
-        Contacts = (await contractsAndJobsDataService.GetAllContactsAsync()).ToList();
+        this.Contacts = (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
     }
 
     public async Task PopulateContactAsync(int contactId)
     {
-        Contact = await contractsAndJobsDataService.GetFullContactAsync(contactId);
+        this.Contact = await this.contractsAndJobsDataService.GetFullContactAsync(contactId);
     }
 
     public List<Contact>? Contacts { get; set; }

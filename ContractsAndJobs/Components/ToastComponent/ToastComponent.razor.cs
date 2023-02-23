@@ -17,14 +17,14 @@ public partial class ToastComponent
 
     protected override void OnInitialized()
     {
-        ToastService!.ShowToastTrigger += (ToastOption options) =>
+        this.ToastService!.ShowToastTrigger += (ToastOption options) =>
         {
-            InvokeAsync(() =>
+            this.InvokeAsync(() =>
             {
-                Options = options;
-                IsToastVisible = true;
-                StateHasChanged();
-                Toast!.ShowAsync();
+                this.Options = options;
+                this.IsToastVisible = true;
+                this.StateHasChanged();
+                this.Toast!.ShowAsync();
             });
         };
         base.OnInitialized();

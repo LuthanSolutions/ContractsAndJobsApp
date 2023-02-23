@@ -10,6 +10,6 @@ public partial class Countries
 
     protected async override Task OnInitializedAsync()
     {
-        await ViewModel!.InstantiateAsync();
+        await this.ViewModel!.InstantiateAsync();
     }
 }

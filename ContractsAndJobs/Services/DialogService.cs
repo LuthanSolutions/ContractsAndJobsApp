@@ -29,31 +29,31 @@ public class DialogService : IDialogService
 
     public async Task AlertAsync(string title, string message, string? buttonText = null)
     {
-        SetButtonTexts(buttonText);
+        this.SetButtonTexts(buttonText);
 
-        await dialogService.AlertAsync(message, title, dialogOptions);
+        await this.dialogService.AlertAsync(message, title, this.dialogOptions);
 
-        ClearButtonTexts();
+        this.ClearButtonTexts();
     }
 
     public async Task<bool> ConfirmAsync(string title, string message, string? primaryButtonText = null, string? secondaryButtonText = null)
     {
-        SetButtonTexts(primaryButtonText, secondaryButtonText);
+        this.SetButtonTexts(primaryButtonText, secondaryButtonText);
 
-        var result = await dialogService.ConfirmAsync(message, title, dialogOptions);
+        var result = await this.dialogService.ConfirmAsync(message, title, this.dialogOptions);
 
-        ClearButtonTexts();
+        this.ClearButtonTexts();
 
         return result;
     }
 
     public async Task<string> PromptAsync(string title, string message, string? primaryButtonText = null, string? secondaryButtonText = null)
     {
-        SetButtonTexts(primaryButtonText, secondaryButtonText);
+        this.SetButtonTexts(primaryButtonText, secondaryButtonText);
 
-        var result = await dialogService.PromptAsync(message, title, dialogOptions);
+        var result = await this.dialogService.PromptAsync(message, title, this.dialogOptions);
 
-        ClearButtonTexts();
+        this.ClearButtonTexts();
 
         return result;
     }
@@ -62,17 +62,17 @@ public class DialogService : IDialogService
     {
         if (!string.IsNullOrEmpty(primaryButtonText))
         {
-            dialogOptions.PrimaryButtonOptions = new DialogButtonOptions { Content = primaryButtonText };
+            this.dialogOptions.PrimaryButtonOptions = new DialogButtonOptions { Content = primaryButtonText };
         }
         if (!string.IsNullOrEmpty(secondaryButtonText))
         {
-            dialogOptions.CancelButtonOptions = new DialogButtonOptions { Content = secondaryButtonText };
+            this.dialogOptions.CancelButtonOptions = new DialogButtonOptions { Content = secondaryButtonText };
         }
     }
 
     private void ClearButtonTexts()
     {
-        dialogOptions.PrimaryButtonOptions = null;
-        dialogOptions.CancelButtonOptions = null;
+        this.dialogOptions.PrimaryButtonOptions = null;
+        this.dialogOptions.CancelButtonOptions = null;
     }
 }

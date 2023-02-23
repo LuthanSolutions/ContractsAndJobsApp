@@ -30,16 +30,16 @@ public class ContractsAndJobsDataService : IContractsAndJobsDataService
     public async Task<IEnumerable<Contact>> GetAllContactsAsync()
     {
         var contacts = new List<Contact>();
-        connection = new SqlConnection(ConnectionString);
+        this.connection = new SqlConnection(ConnectionString);
         await using var command = new SqlCommand();
-        command.Connection = connection;
+        command.Connection = this.connection;
         command.CommandType = CommandType.StoredProcedure;
         command.CommandText = "GetAllContacts";
-        await connection.OpenAsync();
+        await this.connection.OpenAsync();
         var reader = await command.ExecuteReaderAsync();
         while (await reader.ReadAsync())
         {
-            contacts.Add(dataService.GetObjectFromReader<Contact>(reader));
+            contacts.Add(this.dataService.GetObjectFromReader<Contact>(reader));
         }
         return contacts;
     }
@@ -47,59 +47,59 @@ public class ContractsAndJobsDataService : IContractsAndJobsDataService
     public async Task<Contact> GetFullContactAsync(int contactId)
     {
         var models = new List<ContactDataModel>();
-        connection = new SqlConnection(ConnectionString);
+        this.connection = new SqlConnection(ConnectionString);
         await using var command = new SqlCommand();
-        command.Connection = connection;
+        command.Connection = this.connection;
         command.CommandType = CommandType.StoredProcedure;
         command.CommandText = "GetFullContactDetails";
         command.Parameters.AddWithValue("@contactId", contactId);
-        await connection.OpenAsync();
+        await this.connection.OpenAsync();
         var reader = await command.ExecuteReaderAsync();
         while (await reader.ReadAsync())
         {
-            models.Add(dataService.GetObjectFromReader<ContactDataModel>(reader));
+            models.Add(this.dataService.GetObjectFromReader<ContactDataModel>(reader));
         }
         return GetContactFromDataModels(models);
     }
 
     public async Task AddContactAsync(Contact contact)
     {
-        connection = new SqlConnection(ConnectionString);
+        this.connection = new SqlConnection(ConnectionString);
         await using var command = new SqlCommand();
-        command.Connection = connection;
+        command.Connection = this.connection;
         command.CommandType = CommandType.StoredProcedure;
         command.CommandText = "AddContact";
         command.Parameters.AddWithValue("@firstName", contact.FirstName);
         command.Parameters.AddWithValue("@lastName", contact.LastName);
         command.Parameters.AddWithValue("@agency", string.IsNullOrEmpty(contact.Agency) ? DBNull.Value : contact.Agency);
-        await connection.OpenAsync();
+        await this.connection.OpenAsync();
         await command.ExecuteNonQueryAsync();
     }
 
     public async Task UpdateContactAsync(Contact contact)
     {
-        connection = new SqlConnection(ConnectionString);
+        this.connection = new SqlConnection(ConnectionString);
         await using var command = new SqlCommand();
-        command.Connection = connection;
+        command.Connection = this.connection;
         command.CommandType = CommandType.StoredProcedure;
         command.CommandText = "UpdateContact";
         command.Parameters.AddWithValue("@id", contact.Id);
         command.Parameters.AddWithValue("@firstName", contact.FirstName);
         command.Parameters.AddWithValue("@lastName", contact.LastName);
         command.Parameters.AddWithValue("@agency", contact.Agency);
-        await connection.OpenAsync();
+        await this.connection.OpenAsync();
         await command.ExecuteNonQueryAsync();
     }
 
     public async Task DeleteContactAsync(Contact contact)
     {
-        connection = new SqlConnection(ConnectionString);
+        this.connection = new SqlConnection(ConnectionString);
         await using var command = new SqlCommand();
-        command.Connection = connection;
+        command.Connection = this.connection;
         command.CommandType = CommandType.StoredProcedure;
         command.CommandText = "DeleteContact";
         command.Parameters.AddWithValue("@id", contact.Id);
-        await connection.OpenAsync();
+        await this.connection.OpenAsync();
         await command.ExecuteNonQueryAsync();
     }
 

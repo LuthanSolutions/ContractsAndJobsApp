@@ -1,4 +1,5 @@
-﻿using ContractsAndJobs.Models;
+﻿using ContractsAndJobs.ApiServices;
+using ContractsAndJobs.Models;
 using ContractsAndJobs.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.DropDowns;
@@ -16,26 +17,29 @@ public partial class Index
     [Inject]
     SfDialogService? DialogService { get; set; }
 
+    [Inject]
+    IApiService? ApiService { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
-        await ViewModel!.InitialiseViewModelAsync();
+        await this.ViewModel!.InitialiseViewModelAsync();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            await contactSearch!.FocusAsync();
+            await this.contactSearch!.FocusAsync();
         }
     }
 
     private async Task SelectedPersonChangeHandlerAsync(ChangeEventArgs<string, Contact> args)
     {
-        await ViewModel!.PopulateContactAsync(args.ItemData.Id);
+        await this.ViewModel!.PopulateContactAsync(args.ItemData.Id);
     }
 
     private async Task ShowAlert() =>
-        await DialogService!.AlertAsync(
+        await this.DialogService!.AlertAsync(
             "This is the alert content",
             "Title",
             new DialogOptions

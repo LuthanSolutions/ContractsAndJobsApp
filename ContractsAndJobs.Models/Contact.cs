@@ -6,6 +6,6 @@ public class Contact
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string? Agency { get; set; }
-    public string FullName => $"{FirstName} {LastName} - {Agency}";
+    public string FullName => $"{this.FirstName} {this.LastName} - {this.Agency}";
     public IEnumerable<Interaction>? Interactions { get; set; }
 }

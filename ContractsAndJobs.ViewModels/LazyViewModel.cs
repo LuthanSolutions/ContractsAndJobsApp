@@ -18,13 +18,13 @@ public class LazyViewModel : ILazyViewModel
         this.contractsAndJobsDataService = contractsAndJobsDataService;
     }
 
-    private AsyncLazy<List<Contact>> contacts => new(() => GetAllContacts());
+    private AsyncLazy<List<Contact>> contacts => new(() => this.GetAllContacts());
 
-    public AsyncLazy<List<Contact>> Contacts => contacts;
+    public AsyncLazy<List<Contact>> Contacts => this.contacts;
 
     private async Task<List<Contact>> GetAllContacts()
     {
-        return (await contractsAndJobsDataService.GetAllContactsAsync()).ToList();
+        return (await this.contractsAndJobsDataService.GetAllContactsAsync()).ToList();
     }
 }
 
@@ -45,7 +45,7 @@ public sealed class AsyncLazy<T>
     /// <param name="factory">The delegate that is invoked on a background thread to produce the value when it is needed.</param>
     public AsyncLazy(Func<T> factory)
     {
-        instance = new Lazy<Task<T>>(() => Task.Run(factory));
+        this.instance = new Lazy<Task<T>>(() => Task.Run(factory));
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public sealed class AsyncLazy<T>
     /// <param name="factory">The asynchronous delegate that is invoked on a background thread to produce the value when it is needed.</param>
     public AsyncLazy(Func<Task<T>> factory)
     {
-        instance = new Lazy<Task<T>>(() => Task.Run(factory));
+        this.instance = new Lazy<Task<T>>(() => Task.Run(factory));
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public sealed class AsyncLazy<T>
     /// </summary>
     public TaskAwaiter<T> GetAwaiter()
     {
-        return instance.Value.GetAwaiter();
+        return this.instance.Value.GetAwaiter();
     }
 
     /// <summary>
@@ -70,6 +70,6 @@ public sealed class AsyncLazy<T>
     /// </summary>
     public void Start()
     {
-        var unused = instance.Value;
+        var unused = this.instance.Value;
     }
 }

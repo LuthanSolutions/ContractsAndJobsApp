@@ -25,11 +25,11 @@ public class BrowserService : IBrowserService
     }
 
     public async Task ShowAlertMessage(string message) =>
-        await jsRuntime!.InvokeVoidAsync(AlertCommand, message);
+        await this.jsRuntime!.InvokeVoidAsync(AlertCommand, message);
 
     public async Task<bool> GetConfirmation(string message) =>
-        await jsRuntime!.InvokeAsync<bool>(ConfirmCommand, message);
+        await this.jsRuntime!.InvokeAsync<bool>(ConfirmCommand, message);
 
     public async Task<string> GetUserInput(string message) =>
-        await jsRuntime!.InvokeAsync<string>(PromptCommand, message);
+        await this.jsRuntime!.InvokeAsync<string>(PromptCommand, message);
 }

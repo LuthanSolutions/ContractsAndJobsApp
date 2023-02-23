@@ -18,47 +18,47 @@ public partial class AddContact
 
     protected override async Task OnInitializedAsync()
     {
-        await ViewModel!.InitialiseViewModelAsync();
+        await this.ViewModel!.InitialiseViewModelAsync();
     }
 
     private async Task OnAddClickAsync(MouseEventArgs args)
     {
-        await ViewModel!.AddContactAsync();
-        SetDefaultState();
+        await this.ViewModel!.AddContactAsync();
+        this.SetDefaultState();
     }
 
     private async Task OnSaveClickAsync(MouseEventArgs args)
     {
-        await ViewModel!.UpdateContactAsync();
-        SetDefaultState();
+        await this.ViewModel!.UpdateContactAsync();
+        this.SetDefaultState();
     }
 
     private async Task OnDeleteClickAsync(MouseEventArgs args)
     {
-        await ViewModel!.DeleteContactAsync();
-        SetDefaultState();
+        await this.ViewModel!.DeleteContactAsync();
+        this.SetDefaultState();
     }
 
     private void OnCancelClick(MouseEventArgs args)
     {
-        SetDefaultState();
+        this.SetDefaultState();
     }
 
     private void SetDefaultState()
     {
-        AddDisabled = false;
-        SaveDisabled = true;
-        CancelDisabled = true;
-        DeleteDisabled = true;
-        ViewModel!.SelectedContact = new Contact();
+        this.AddDisabled = false;
+        this.SaveDisabled = true;
+        this.CancelDisabled = true;
+        this.DeleteDisabled = true;
+        this.ViewModel!.SelectedContact = new Contact();
     }
 
     private void ContactRowSelectHandler(RowSelectEventArgs<Contact> args)
     {
-        ViewModel!.SelectedContact = args.Data;
+        this.ViewModel!.SelectedContact = args.Data;
         if (args.Data == null) return;
-        SaveDisabled = false;
-        DeleteDisabled = false;
-        CancelDisabled = false;
+        this.SaveDisabled = false;
+        this.DeleteDisabled = false;
+        this.CancelDisabled = false;
     }
 }

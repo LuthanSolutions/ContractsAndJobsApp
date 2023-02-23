@@ -34,6 +34,6 @@ public partial class DragAndDropListBoxes
 
     private void OnButtonClicked()
     {
-        var countA = GroupA.Count;
+        var countA = this.GroupA.Count;
     }
 }

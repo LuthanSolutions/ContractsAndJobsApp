@@ -13,51 +13,51 @@ public class ToastOption
     private ToastPositions? position = ToastPositions.BottomRight;
     public ToastPositions? ToastPosition
     {
-        get { return position; }
+        get { return this.position; }
         set
         {
-            position = value;
-            switch (position)
+            this.position = value;
+            switch (this.position)
             {
                 case ToastPositions.TopLeft:
                     {
-                        PositionX = "Left";
-                        PositionY = "Top";
+                        this.PositionX = "Left";
+                        this.PositionY = "Top";
                         break;
                     }
                 case ToastPositions.TopMiddle:
                     {
-                        PositionX = "Center";
-                        PositionY = "Top";
+                        this.PositionX = "Center";
+                        this.PositionY = "Top";
                         break;
                     }
                 case ToastPositions.TopRight:
                     {
-                        PositionX = "Right";
-                        PositionY = "Top";
+                        this.PositionX = "Right";
+                        this.PositionY = "Top";
                         break;
                     }
                 case ToastPositions.BottomLeft:
                     {
-                        PositionX = "Left";
-                        PositionY = "Bottom";
+                        this.PositionX = "Left";
+                        this.PositionY = "Bottom";
                         break;
                     }
                 case ToastPositions.BottomMiddle:
                     {
-                        PositionX = "Center";
-                        PositionY = "Bottom";
+                        this.PositionX = "Center";
+                        this.PositionY = "Bottom";
                         break;
                     }
                 case ToastPositions.BottomRight:
                     {
-                        PositionX = "Right";
-                        PositionY = "Bottom";
+                        this.PositionX = "Right";
+                        this.PositionY = "Bottom";
                         break;
                     }
                 default:
-                    PositionX = "Right";
-                    PositionY = "Bottom";
+                    this.PositionX = "Right";
+                    this.PositionY = "Bottom";
                     break;
             }
         }

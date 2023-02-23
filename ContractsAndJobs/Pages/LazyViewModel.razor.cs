@@ -14,6 +14,6 @@ public partial class LazyViewModel
 
     protected override async Task OnParametersSetAsync()
     {
-        Contacts = await ViewModel!.Contacts;
+        this.Contacts = await this.ViewModel!.Contacts;
     }
 }

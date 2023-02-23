@@ -20,7 +20,7 @@ public class InstantiateAsyncPeopleViewModel : IInstantiateAsyncPeopleViewModel
 
     public async Task InstantiateAsync()
     {
-        People ??= await contractsAndJobsDataService.GetAllContactsAsync();
+        this.People ??= await this.contractsAndJobsDataService.GetAllContactsAsync();
     }
 
     public IEnumerable<Contact>? People { get; set; }
