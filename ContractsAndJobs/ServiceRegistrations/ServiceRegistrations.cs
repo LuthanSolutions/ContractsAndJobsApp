@@ -20,7 +20,7 @@ internal static class ServiceRegistrations
 
         services.AddSingleton<WeatherForecastService>();
         services.AddTransient<IIndexViewModel, IndexViewModel>();
-        services.AddTransient<IContractsAndJobsDataService, DapperDataService>();
+        services.AddScoped<IContractsAndJobsDataService, DapperDataService>();
         services.AddTransient<IAddContactViewModel, AddContactViewModel>();
         services.AddTransient<IBrowserService, BrowserService>();
         services.AddScoped<IToastService, ToastService>();

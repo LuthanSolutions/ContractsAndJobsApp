@@ -7,6 +7,7 @@ namespace ContractsAndJobs.Data;
 
 public class DapperDataService : IContractsAndJobsDataService
 {
+    private readonly SqlConnection connection;
     private const string ConnectionString = "data source=LUTHANSOLUTIONS;initial catalog=ContractsAndJobs;trusted_connection=true";
     private const string GetAllContactsSprocName = "GetAllContacts";
     private const string GetFullContactDetailsSprocName = "GetFullContactDetails";
@@ -14,9 +15,13 @@ public class DapperDataService : IContractsAndJobsDataService
     private const string UpdateContactSprocName = "UpdateContact";
     private const string DeleteContactSprocName = "DeleteContact";
 
+    public DapperDataService()
+    {
+        connection = new SqlConnection(ConnectionString);
+    }
+
     public async Task AddContactAsync(Contact contact)
     {
-        using var connection = new SqlConnection(ConnectionString);
         var parameters = new DynamicParameters();
         parameters.Add("firstName", contact.FirstName);
         parameters.Add("lastName", contact.LastName);
@@ -29,7 +34,6 @@ public class DapperDataService : IContractsAndJobsDataService
 
     public async Task DeleteContactAsync(Contact contact)
     {
-        using var connection = new SqlConnection(ConnectionString);
         var parameters = new DynamicParameters();
         parameters.Add("id", contact.Id);
         await connection.ExecuteAsync(
@@ -40,7 +44,6 @@ public class DapperDataService : IContractsAndJobsDataService
 
     public async Task<IEnumerable<Contact>> GetAllContactsAsync()
     {
-        using var connection = new SqlConnection(ConnectionString);
         return await connection.QueryAsync<Contact>(
             GetAllContactsSprocName, 
             commandType: System.Data.CommandType.StoredProcedure);
@@ -48,7 +51,6 @@ public class DapperDataService : IContractsAndJobsDataService
 
     public async Task<Contact> GetFullContactAsync(int contactId)
     {
-        using var connection = new SqlConnection(ConnectionString);
         var parameters = new DynamicParameters();
         parameters.Add("contactId", contactId);
         var models = await connection.QueryAsync<ContactDataModel>(
