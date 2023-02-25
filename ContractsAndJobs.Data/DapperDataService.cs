@@ -7,17 +7,18 @@ namespace ContractsAndJobs.Data;
 
 public class DapperDataService : IContractsAndJobsDataService
 {
-    private readonly SqlConnection connection;
-    private const string ConnectionString = "data source=LUTHANSOLUTIONS;initial catalog=ContractsAndJobs;trusted_connection=true";
     private const string GetAllContactsSprocName = "GetAllContacts";
     private const string GetFullContactDetailsSprocName = "GetFullContactDetails";
     private const string AddContactSprocName = "AddContact";
     private const string UpdateContactSprocName = "UpdateContact";
     private const string DeleteContactSprocName = "DeleteContact";
 
+    private readonly SqlConnection connection;
+    private const string ConnectionString = "data source=LUTHANSOLUTIONS;initial catalog=ContractsAndJobs;trusted_connection=true";
+
     public DapperDataService()
     {
-        connection = new SqlConnection(ConnectionString);
+        this.connection = new SqlConnection(ConnectionString);
     }
 
     public async Task AddContactAsync(Contact contact)
@@ -26,9 +27,9 @@ public class DapperDataService : IContractsAndJobsDataService
         parameters.Add("firstName", contact.FirstName);
         parameters.Add("lastName", contact.LastName);
         parameters.Add("agency", contact.Agency);
-        await connection.ExecuteAsync(
-            AddContactSprocName, 
-            parameters, 
+        await this.connection.ExecuteAsync(
+            AddContactSprocName,
+            parameters,
             commandType: System.Data.CommandType.StoredProcedure);
     }
 
@@ -36,16 +37,16 @@ public class DapperDataService : IContractsAndJobsDataService
     {
         var parameters = new DynamicParameters();
         parameters.Add("id", contact.Id);
-        await connection.ExecuteAsync(
-            DeleteContactSprocName, 
-            parameters, 
+        await this.connection.ExecuteAsync(
+            DeleteContactSprocName,
+            parameters,
             commandType: System.Data.CommandType.StoredProcedure);
     }
 
     public async Task<IEnumerable<Contact>> GetAllContactsAsync()
     {
-        return await connection.QueryAsync<Contact>(
-            GetAllContactsSprocName, 
+        return await this.connection.QueryAsync<Contact>(
+            GetAllContactsSprocName,
             commandType: System.Data.CommandType.StoredProcedure);
     }
 
@@ -53,9 +54,9 @@ public class DapperDataService : IContractsAndJobsDataService
     {
         var parameters = new DynamicParameters();
         parameters.Add("contactId", contactId);
-        var models = await connection.QueryAsync<ContactDataModel>(
-            GetFullContactDetailsSprocName, 
-            parameters, 
+        var models = await this.connection.QueryAsync<ContactDataModel>(
+            GetFullContactDetailsSprocName,
+            parameters,
             commandType: System.Data.CommandType.StoredProcedure);
         return GetContactFromDataModels(models);
     }
@@ -69,8 +70,8 @@ public class DapperDataService : IContractsAndJobsDataService
         parameters.Add("lastName", contact.LastName);
         parameters.Add("agency", contact.Agency);
         await connection.ExecuteAsync(
-            UpdateContactSprocName, 
-            parameters, 
+            UpdateContactSprocName,
+            parameters,
             commandType: System.Data.CommandType.StoredProcedure);
     }
 
